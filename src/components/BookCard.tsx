@@ -15,7 +15,7 @@ import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 
 interface BookCardProps {
   book: Book;
-  onFavoritePress: (bookNumber: number) => void;
+  onFavoritePress: (bookId: string) => void;
 }
 
 const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {

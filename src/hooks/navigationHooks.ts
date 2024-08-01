@@ -13,8 +13,8 @@ type BooksScreenNavigationProp = NativeStackNavigationProp<
 export const useNavigateToBookDetail = () => {
   const navigation = useNavigation<BooksScreenNavigationProp>();
 
-  const navigateToBookDetail = (bookId: string | number) => {
-    navigation.navigate('BookDetail', {bookId: bookId.toString()});
+  const navigateToBookDetail = (bookId: string) => {
+    navigation.navigate('BookDetail', {bookId: bookId});
   };
 
   return navigateToBookDetail;

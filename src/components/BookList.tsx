@@ -7,7 +7,7 @@ import {Book} from '../types/book.ts';
 
 type BookListProps = {
   books: Book[];
-  onFavoritePress: (bookNumber: number) => void;
+  onFavoritePress: (bookId: string) => void;
   onViewableItemsChanged: ({
     viewableItems,
   }: {
@@ -36,22 +36,19 @@ const BookList: React.FC<BookListProps> = ({
     [onFavoritePress],
   );
 
-  const keyExtractor = useCallback(
-    (item: Book) => 'book' + item?.id.toString(),
-    [],
-  );
+  const keyExtractor = useCallback((item: Book) => 'book' + item.id, []);
 
-  //   const ITEM_WIDTH = widthPercentageToDP('75%');
-  //     const ITEM_SPACING = widthPercentageToDP('2.5%');
+  const ITEM_WIDTH = widthPercentageToDP('70%');
+  const ITEM_SPACING = widthPercentageToDP('5%');
 
-  //   const getItemLayout = (
-  //     _data: ArrayLike<Book> | null | undefined,
-  //     index: number,
-  //   ) => ({
-  //     length: ITEM_WIDTH,
-  //     offset: (ITEM_WIDTH + ITEM_SPACING) * index,
-  //     index,
-  //   });
+  const getItemLayout = (
+    _data: ArrayLike<Book> | null | undefined,
+    index: number,
+  ) => ({
+    length: ITEM_WIDTH,
+    offset: (ITEM_WIDTH + ITEM_SPACING) * index,
+    index,
+  });
 
   return (
     <View>
@@ -65,7 +62,7 @@ const BookList: React.FC<BookListProps> = ({
         snapToInterval={widthPercentageToDP('75%')}
         snapToAlignment={'center'}
         decelerationRate={'fast'}
-        // getItemLayout={getItemLayout}
+        getItemLayout={getItemLayout}
         removeClippedSubviews={true}
         initialNumToRender={5}
         maxToRenderPerBatch={5}

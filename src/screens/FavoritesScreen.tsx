@@ -14,7 +14,7 @@ const FavoritesScreen: React.FC = () => {
       <View style={styles.listContainer}>
         <FlatList
           data={favorites}
-          keyExtractor={item => 'favorite' + item.toString()}
+          keyExtractor={item => 'favorite' + item}
           renderItem={renderItem}
           initialNumToRender={10}
           removeClippedSubviews={true}

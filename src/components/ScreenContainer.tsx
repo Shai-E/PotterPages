@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
-
+import {light} from '../fixtures/colors.json';
 interface Props {
   children: React.ReactNode;
   backgroundColor?: string;
@@ -11,7 +11,7 @@ const ScreenContainer = ({
   children,
 }: Props): React.JSX.Element => {
   const backgroundStyle = {
-    backgroundColor: backgroundColor || 'white',
+    backgroundColor: backgroundColor || light.primary,
     flex: 1,
   };
 
