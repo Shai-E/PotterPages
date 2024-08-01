@@ -1,23 +1,15 @@
 import React, {memo} from 'react';
 import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {FavoritesStackParamList} from '../navigation/types';
 import {useAppDispatch, useAppSelector} from '../hooks/reduxHooks';
 import {toggleFavorite} from '../store/reducers/booksReducer';
 import StarIcon from '../assets/Star';
-
-type FavoritesScreenNavigationProp = NativeStackNavigationProp<
-  FavoritesStackParamList,
-  'FavoritesScreen'
->;
+import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 
 type FavoriteItemProps = {
   bookId: string;
 };
 
 const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
-  const navigation = useNavigation<FavoritesScreenNavigationProp>();
   const favorite = useAppSelector(state => state.books.booksMap[bookId]);
   const dispatch = useAppDispatch();
 
@@ -25,14 +17,12 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
     dispatch(toggleFavorite(favorite.id));
   };
 
-  const handleNavigateToDetail = () => {
-    navigation.navigate('BookDetail', {
-      bookId: favorite.id.toString(),
-    });
-  };
+  const navigateToBookDetail = useNavigateToBookDetail();
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigateToDetail}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={navigateToBookDetail.bind(this, favorite.id)}>
       <Image source={{uri: favorite.cover}} style={styles.image} />
       <Text style={styles.title}>{favorite.title}</Text>
       <TouchableOpacity onPress={handleToggleFavorite}>

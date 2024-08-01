@@ -1,12 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Book} from '../types/book';
+import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 
 type BookDescriptionProps = {
   book: Book | undefined; // It could be undefined if there is no book to show
 };
 
 const BookDescription: React.FC<BookDescriptionProps> = ({book}) => {
+  const navigateToBookDetail = useNavigateToBookDetail();
+
   return (
     <View style={styles.bookDescriptionContainer}>
       {book && (
@@ -17,7 +20,11 @@ const BookDescription: React.FC<BookDescriptionProps> = ({book}) => {
             numberOfLines={3}>
             {book.description}
           </Text>
-          <Text style={styles.continueReadingText}>{'Continue reading >'}</Text>
+          <Text
+            onPress={navigateToBookDetail.bind(this, book.id)}
+            style={styles.continueReadingText}>
+            {'Continue reading >'}
+          </Text>
         </View>
       )}
     </View>

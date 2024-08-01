@@ -9,35 +9,27 @@ import {
 // import FastImage from 'react-native-fast-image';
 import {Book} from '../types/book';
 import StarIcon from '../assets/Star';
-import {useNavigation} from '@react-navigation/native';
 import {useAppSelector} from '../hooks/reduxHooks';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {BooksStackParamList} from '../navigation/types';
 import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 
 interface BookCardProps {
   book: Book;
   onFavoritePress: (bookNumber: number) => void;
 }
 
-type BooksScreenNavigationProp = NativeStackNavigationProp<
-  BooksStackParamList,
-  'BooksScreen'
->;
-
 const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
   const isFavorite = useAppSelector(
     state => state.books.booksMap[book.id]?.isFavorite,
   );
-  const navigation = useNavigation<BooksScreenNavigationProp>();
+
+  const navigateToBookDetail = useNavigateToBookDetail();
 
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       style={styles.card}
-      onPress={() =>
-        navigation.navigate('BookDetail', {bookId: book.id.toString()})
-      }>
+      onPress={navigateToBookDetail.bind(this, book.id)}>
       <ImageBackground source={{uri: book.cover}} style={styles.cover}>
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{book.title}</Text>
