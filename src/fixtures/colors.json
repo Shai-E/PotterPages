@@ -1,0 +1,26 @@
+{
+    "dark": {
+        "primary": "#58a6ff",
+        "secondary": "#79c0ff",
+        "tertiary": "#8b949e",
+        "quaternary": "#30363d",
+        "quinary": "#0d1117",
+        "senary": "#484f58",
+        "septenary": "#6e7681",
+        "octonary": "#8b949e",
+        "nonary": "#b1bac4",
+        "denary": "#c9d1d9"
+    },
+    "light": {
+        "primary": "#0d1117",
+        "secondary": "#30363d",
+        "tertiary": "#484f58",
+        "quaternary": "#6e7681",
+        "quinary": "#8b949e",
+        "senary": "#b1bac4",
+        "septenary": "#c9d1d9",
+        "octonary": "#f0f6fc",
+        "nonary": "#f0f6fc",
+        "denary": "#f0f6fc"
+    }
+}

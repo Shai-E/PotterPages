@@ -1,0 +1,10 @@
+DONE:
+TO DO: 
+[ ] remove unnecessary packages: reselect, fast-image
+[ ] design and re-title headers
+[ ] make sure to change initial screen (no content appears for a second)
+[ ] splash screen and app logo
+[ ] reorganize imports
+[ ] check naming convention
+[ ] extract texts to langs.json
+[ ] handle continue reading link in main page
