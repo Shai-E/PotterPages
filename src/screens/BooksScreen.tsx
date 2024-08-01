@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {ViewToken} from 'react-native';
 //redux
 import {useAppDispatch, useAppSelector} from '../hooks/reduxHooks';
 import {getBooks, toggleFavorite} from '../store/reducers/booksReducer';
@@ -9,15 +8,12 @@ import {useDebounce} from '../hooks/useDebounce';
 import ScreenContainer from '../components/ScreenContainer';
 import SearchBar from '../components/SearchBar';
 import BookList from '../components/BookList';
-import BookDescription from '../components/BookDescription';
 //fixtures
 import {light} from '../fixtures/colors.json';
 //types
-import {Book} from '../types/book';
 
 const BooksScreen: React.FC = () => {
   const [searchKey, setSearchKey] = useState('');
-  const [viewableIndex, setViewableIndex] = useState<number | null>();
   const books = useAppSelector(state => state.books.books);
   const dispatch = useAppDispatch();
   const debouncedSearchKey = useDebounce(searchKey, 300);
@@ -47,26 +43,10 @@ const BooksScreen: React.FC = () => {
     [],
   );
 
-  const onViewableItemsChanged = useCallback(
-    ({viewableItems}: {viewableItems: ViewToken<Book>[]}) => {
-      if (viewableItems[0]) {
-        setViewableIndex(viewableItems[0].index);
-      }
-    },
-    [],
-  );
-
   return (
     <ScreenContainer backgroundColor={light.primary}>
       <SearchBar searchKey={searchKey} setSearchKey={setSearchKey} />
-      <BookList
-        books={filteredBooks}
-        onFavoritePress={onFavoritePress}
-        onViewableItemsChanged={onViewableItemsChanged}
-      />
-      {(viewableIndex || viewableIndex === 0) && (
-        <BookDescription book={filteredBooks[viewableIndex]} />
-      )}
+      <BookList books={filteredBooks} onFavoritePress={onFavoritePress} />
     </ScreenContainer>
   );
 };

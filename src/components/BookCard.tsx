@@ -29,16 +29,19 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
 
   return (
     <TouchableOpacity
-      activeOpacity={0.6}
+      activeOpacity={0.8}
       style={styles.card}
       onPress={navigateToBookDetail.bind(this, book.id)}>
       <ImageBackground
         source={{uri: book.cover}}
         style={styles.cover}
-        resizeMode={'contain'}>
-        <View style={styles.infoContainer}>
-          <Text style={styles.title}>{book.title}</Text>
-          <Text style={styles.date}>{book.releaseDate}</Text>
+        imageStyle={styles.image}
+        resizeMode={'cover'}>
+        <View style={styles.overlay}>
+          <View style={styles.infoContainer}>
+            <Text style={styles.title}>{book.title}</Text>
+            <Text style={styles.date}>{book.releaseDate}</Text>
+          </View>
           <TouchableOpacity
             onPress={onFavoritePress.bind(this, book.id)}
             style={styles.favoriteIcon}>
@@ -52,34 +55,41 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: widthPercentageToDP('70%'),
     height: heightPercentageToDP('40%'),
-    marginHorizontal: widthPercentageToDP('2.5%'),
+    width: widthPercentageToDP('45%'),
+    margin: widthPercentageToDP('2.5%'),
+    borderRadius: 15,
     overflow: 'hidden',
   },
   cover: {
-    width: widthPercentageToDP('70%'),
-    height: heightPercentageToDP('40%'),
+    height: '100%',
     justifyContent: 'flex-end',
   },
-  infoContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  image: {
+    borderRadius: 15,
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    flex: 1,
+    justifyContent: 'space-between',
     padding: 10,
+  },
+  infoContainer: {
+    backgroundColor: 'transparent',
+    paddingHorizontal: 10,
   },
   title: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   date: {
-    color: '#fff',
-    fontSize: 14,
-    marginTop: 5,
+    color: '#ddd',
+    fontSize: 12,
+    marginTop: 2,
   },
   favoriteIcon: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
+    alignSelf: 'flex-end',
   },
 });
 

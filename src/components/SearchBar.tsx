@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import SearchIcon from '../assets/Search.tsx';
 import {light} from '../fixtures/colors.json';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
 
 type SearchBarProps = {
   searchKey: string;
@@ -21,15 +22,18 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
   });
 
   return (
-    <View style={styles.searchInputContainer}>
-      <SearchIcon style={dynamicStyles()} />
-      <TextInput
-        placeholder="Search Books"
-        style={styles.searchInput}
-        onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) =>
-          setSearchKey(e.nativeEvent.text)
-        }
-      />
+    <View
+      style={{height: heightPercentageToDP('7%'), justifyContent: 'flex-end'}}>
+      <View style={styles.searchInputContainer}>
+        <SearchIcon style={dynamicStyles()} />
+        <TextInput
+          placeholder="Search Books"
+          style={styles.searchInput}
+          onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) =>
+            setSearchKey(e.nativeEvent.text)
+          }
+        />
+      </View>
     </View>
   );
 };
@@ -39,8 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    height: '7%',
-    marginTop: 20,
+    height: heightPercentageToDP('6%'),
     marginHorizontal: 10,
     borderRadius: 10,
     borderWidth: 1,
