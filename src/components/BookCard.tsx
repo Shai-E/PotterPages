@@ -9,7 +9,10 @@ import {
 import {Book} from '../types/book';
 import StarIcon from '../assets/Star';
 import {useAppSelector} from '../hooks/reduxHooks';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 
 interface BookCardProps {
@@ -29,7 +32,10 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
       activeOpacity={0.6}
       style={styles.card}
       onPress={navigateToBookDetail.bind(this, book.id)}>
-      <ImageBackground source={{uri: book.cover}} style={styles.cover}>
+      <ImageBackground
+        source={{uri: book.cover}}
+        style={styles.cover}
+        resizeMode={'contain'}>
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{book.title}</Text>
           <Text style={styles.date}>{book.releaseDate}</Text>
@@ -46,18 +52,14 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
 
 const styles = StyleSheet.create({
   card: {
+    width: widthPercentageToDP('70%'),
+    height: heightPercentageToDP('40%'),
     marginHorizontal: widthPercentageToDP('2.5%'),
-    // borderRadius: 10,
     overflow: 'hidden',
-    // elevation: 3, // for Android shadow
-    // shadowColor: '#000', // for iOS shadow
-    // shadowOffset: {width: 0, height: 2}, // for iOS shadow
-    // shadowOpacity: 0.25, // for iOS shadow
-    // shadowRadius: 3.84, // for iOS shadow
   },
   cover: {
     width: widthPercentageToDP('70%'),
-    height: widthPercentageToDP('110%'),
+    height: heightPercentageToDP('40%'),
     justifyContent: 'flex-end',
   },
   infoContainer: {

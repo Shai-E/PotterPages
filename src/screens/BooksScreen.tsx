@@ -30,20 +30,14 @@ const BooksScreen: React.FC = () => {
   }, []);
 
   const filteredBooks = useMemo(() => {
+    if (debouncedSearchKey === '') {
+      return books;
+    }
+
     return books.filter(book =>
       book?.title.toLowerCase().includes(debouncedSearchKey.toLowerCase()),
     );
   }, [books, debouncedSearchKey]);
-
-  const displayBooks = useMemo(() => {
-    if (filteredBooks.length > 0 && searchKey) {
-      return filteredBooks;
-    }
-    if (!searchKey) {
-      return books;
-    }
-    return [];
-  }, [filteredBooks, searchKey, books]);
 
   const onFavoritePress = useCallback(
     (bookId: string) => {
@@ -66,12 +60,12 @@ const BooksScreen: React.FC = () => {
     <ScreenContainer backgroundColor={light.primary}>
       <SearchBar searchKey={searchKey} setSearchKey={setSearchKey} />
       <BookList
-        books={displayBooks}
+        books={filteredBooks}
         onFavoritePress={onFavoritePress}
         onViewableItemsChanged={onViewableItemsChanged}
       />
       {(viewableIndex || viewableIndex === 0) && (
-        <BookDescription book={displayBooks[viewableIndex]} />
+        <BookDescription book={filteredBooks[viewableIndex]} />
       )}
     </ScreenContainer>
   );
