@@ -27,7 +27,7 @@ const BooksScreen: React.FC = () => {
       dispatch(getBooks());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, []);
 
   const filteredBooks = useMemo(() => {
     return books.filter(book =>
@@ -46,10 +46,11 @@ const BooksScreen: React.FC = () => {
   }, [filteredBooks, searchKey, books]);
 
   const onFavoritePress = useCallback(
-    (bookId: number) => {
+    (bookId: string) => {
       dispatch(toggleFavorite(bookId));
     },
-    [dispatch],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   const onViewableItemsChanged = useCallback(

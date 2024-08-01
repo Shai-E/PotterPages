@@ -1,13 +1,16 @@
-export type BooksStackParamList = {
-  BooksScreen: undefined;
-  BookDetail: {bookId: string};
-};
-export type FavoritesStackParamList = {
-  FavoritesScreen: undefined;
-  BookDetail: {bookId: string};
+export type RootStackParamList = {
+  tabs: undefined;
+  main: {
+    screen: keyof MainStackParamList;
+    params: MainStackParamList[keyof MainStackParamList];
+  };
 };
 
-export type RootTabParamList = {
-  Books: undefined;
-  Favorites: undefined;
+export type TabsParamList = {
+  favorites: undefined;
+  books: undefined;
+};
+
+export type MainStackParamList = {
+  details: {bookId: string};
 };

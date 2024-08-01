@@ -6,7 +6,6 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-// import FastImage from 'react-native-fast-image';
 import {Book} from '../types/book';
 import StarIcon from '../assets/Star';
 import {useAppSelector} from '../hooks/reduxHooks';

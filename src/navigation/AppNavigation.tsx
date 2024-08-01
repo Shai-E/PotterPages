@@ -1,55 +1,38 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import BooksNavigator from './BooksNavigator';
-import {RootTabParamList} from './types';
-import FavoritesNavigator from './FavoritesNavigator';
-import BookmarkIcon from '../assets/Bookmark';
-import BookIcon from '../assets/Book';
+import MainNavigation from './MainNavigation';
 import {light} from '../fixtures/colors.json';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {RootStackParamList} from './types';
+import TabNavigation from './TabNavigation';
 
-const Tab = createBottomTabNavigator<RootTabParamList>();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
-const bookTabIcon = ({focused}: {focused: boolean}) => (
-  <BookIcon width={20} height={20} color={focused ? 'white' : 'gray'} />
-);
-
-const bookmarkTabIcon = ({focused}: {focused: boolean}) => (
-  <BookmarkIcon width={20} height={20} color={focused ? 'white' : 'gray'} />
-);
-
-const AppNavigator = () => {
+const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <RootStack.Navigator
         screenOptions={{
-          tabBarStyle: {
+          headerShown: false,
+          headerBackTitle: 'Back',
+          headerStyle: {
             backgroundColor: light.primary,
           },
-          tabBarLabelStyle: {
-            fontSize: 12,
-            color: 'white',
-          },
+          headerTintColor: 'white',
         }}>
-        <Tab.Screen
-          name="Books"
-          component={BooksNavigator}
-          options={{
-            headerShown: false,
-            tabBarIcon: bookTabIcon,
-          }}
+        <RootStack.Screen
+          name="tabs"
+          component={TabNavigation}
+          options={{headerShown: false}}
         />
-        <Tab.Screen
-          name="Favorites"
-          component={FavoritesNavigator}
-          options={{
-            headerShown: false,
-            tabBarIcon: bookmarkTabIcon,
-          }}
+        <RootStack.Screen
+          name="main"
+          component={MainNavigation}
+          options={{headerShown: true, headerTitle: 'Book Details'}}
         />
-      </Tab.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default AppNavigator;
+export default AppNavigation;
