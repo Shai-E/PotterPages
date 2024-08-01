@@ -1,8 +1,8 @@
 DONE:
 [+] remove unnecessary packages: reselect, fast-image
 [+] handle continue reading link in main page
+[+] basic design and re-title headers
 TO DO: 
-[ ] design and re-title headers
 [ ] make sure to change initial screen (no content appears for a second)
 [ ] splash screen and app logo
 [ ] reorganize imports
