@@ -1,5 +1,6 @@
 DONE:
 [+] remove unnecessary packages: reselect, fast-image
+[+] handle continue reading link in main page
 TO DO: 
 [ ] design and re-title headers
 [ ] make sure to change initial screen (no content appears for a second)
@@ -7,4 +8,3 @@ TO DO:
 [ ] reorganize imports
 [ ] check naming convention
 [ ] extract texts to langs.json
-[ ] handle continue reading link in main page
