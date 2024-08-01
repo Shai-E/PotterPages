@@ -1,9 +1,9 @@
 import React, {memo} from 'react';
 import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {useAppDispatch, useAppSelector} from '../hooks/reduxHooks';
-import {toggleFavorite} from '../store/reducers/booksReducer';
+import {useAppSelector} from '../hooks/reduxHooks';
 import StarIcon from '../assets/Star';
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
+import {useToggleFavorite} from '../hooks/useToggleFavorite';
 
 type FavoriteItemProps = {
   bookId: string;
@@ -11,11 +11,8 @@ type FavoriteItemProps = {
 
 const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
   const favorite = useAppSelector(state => state.books.booksMap[bookId]);
-  const dispatch = useAppDispatch();
 
-  const handleToggleFavorite = () => {
-    dispatch(toggleFavorite(favorite.id));
-  };
+  const handleToggleFavorite = useToggleFavorite();
 
   const navigateToBookDetail = useNavigateToBookDetail();
 
@@ -25,7 +22,9 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
       onPress={navigateToBookDetail.bind(this, favorite.id)}>
       <Image source={{uri: favorite.cover}} style={styles.image} />
       <Text style={styles.title}>{favorite.title}</Text>
-      <TouchableOpacity onPress={handleToggleFavorite}>
+      <TouchableOpacity
+        onPress={handleToggleFavorite.bind(this, favorite.id)}
+        hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}>
         <StarIcon />
       </TouchableOpacity>
     </TouchableOpacity>

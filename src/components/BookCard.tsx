@@ -44,6 +44,7 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress}) => {
           </View>
           <TouchableOpacity
             onPress={onFavoritePress.bind(this, book.id)}
+            hitSlop={{top: 20, right: 20, bottom: 20, left: 20}}
             style={styles.favoriteIcon}>
             <StarIcon fill={!isFavorite ? 'transparent' : undefined} />
           </TouchableOpacity>

@@ -22,8 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
   });
 
   return (
-    <View
-      style={{height: heightPercentageToDP('7%'), justifyContent: 'flex-end'}}>
+    <View style={styles.searchBarContainer}>
       <View style={styles.searchInputContainer}>
         <SearchIcon style={dynamicStyles()} />
         <TextInput
@@ -39,6 +38,10 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
 };
 
 const styles = StyleSheet.create({
+  searchBarContainer: {
+    height: heightPercentageToDP('7%'),
+    justifyContent: 'flex-end',
+  },
   searchInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderStartWidth: 1,
     borderColor: '#ccc',
+    color: light.tertiary,
   },
 });
 

@@ -8,52 +8,43 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useRoute} from '@react-navigation/native';
-import ScreenContainer from '../components/ScreenContainer';
-import {useAppDispatch, useAppSelector} from '../hooks/reduxHooks';
+import {useAppSelector} from '../hooks/reduxHooks';
 import {Book} from '../types/book';
 import StarIcon from '../assets/Star';
-import {toggleFavorite} from '../store/reducers/booksReducer';
+import {useToggleFavorite} from '../hooks/useToggleFavorite';
 
 const BookDetailScreen: React.FC = () => {
   const route = useRoute();
   const {bookId} = route.params as {bookId: string};
   const book = useAppSelector(state => state.books.booksMap[bookId]) as Book;
-  const dispatch = useAppDispatch();
+  const handleToggleFavorite = useToggleFavorite();
 
   if (!book) {
     return (
-      <ScreenContainer>
-        <View style={styles.centeredView}>
-          <Text style={styles.errorText}>Book not found.</Text>
-        </View>
-      </ScreenContainer>
+      <View style={styles.centeredView}>
+        <Text style={styles.errorText}>Book not found.</Text>
+      </View>
     );
   }
 
   return (
-    <ScreenContainer>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Image source={{uri: book.cover}} style={styles.bookCover} />
-        <View style={styles.bookInfo}>
-          <Text style={styles.title}>{book.title}</Text>
-          {/* <Text style={styles.author}>by {book.author}</Text> */}
-          <TouchableOpacity
-            style={styles.favoriteButton}
-            onPress={() => {
-              dispatch(toggleFavorite(book.id));
-            }}>
-            <StarIcon fill={!book.isFavorite ? 'transparent' : undefined} />
-            <Text style={styles.favoriteButtonText}>
-              {book.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-            </Text>
-          </TouchableOpacity>
-          <Text style={styles.description}>{book.description}</Text>
-        </View>
-        <TouchableOpacity style={styles.buyButton}>
-          <Text style={styles.buyButtonText}>Buy Now</Text>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      <Image source={{uri: book.cover}} style={styles.bookCover} />
+      <View style={styles.bookInfo}>
+        <Text style={styles.title}>{book.title}</Text>
+        <Text style={styles.releaseDate}>Released: {book.releaseDate}</Text>
+        <Text style={styles.pages}>Pages: {book.pages}</Text>
+        <TouchableOpacity
+          style={styles.favoriteButton}
+          onPress={handleToggleFavorite.bind(this, book.id)}>
+          <StarIcon fill={!book.isFavorite ? 'transparent' : undefined} />
+          <Text style={styles.favoriteButtonText}>
+            {book.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+          </Text>
         </TouchableOpacity>
-      </ScrollView>
-    </ScreenContainer>
+        <Text style={styles.description}>{book.description}</Text>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -61,26 +52,43 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     alignItems: 'center',
+    backgroundColor: '#f5f5f5',
   },
   bookCover: {
-    width: 150,
-    height: 225,
-    borderRadius: 8,
+    width: 180,
+    height: 270,
+    borderRadius: 10,
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ddd',
   },
   bookInfo: {
     width: '100%',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    shadowOffset: {width: 0, height: 4},
+    marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
+    color: '#333',
   },
-  author: {
-    fontSize: 18,
-    color: '#888',
+  releaseDate: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 5,
+  },
+  pages: {
+    fontSize: 16,
+    color: '#666',
     marginBottom: 20,
   },
   description: {
@@ -88,6 +96,7 @@ const styles = StyleSheet.create({
     color: '#444',
     textAlign: 'center',
     marginBottom: 30,
+    lineHeight: 24,
   },
   favoriteButton: {
     flexDirection: 'row',
@@ -101,9 +110,13 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 40,
+    paddingVertical: 12,
+    paddingHorizontal: 50,
     borderRadius: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    shadowOffset: {width: 0, height: 4},
   },
   buyButtonText: {
     color: '#fff',
