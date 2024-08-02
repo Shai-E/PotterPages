@@ -1,14 +1,15 @@
 DONE:
 [+] remove unnecessary packages: reselect, fast-image
-[+] handle continue reading link in main page
-[+] basic design and re-title headers
-[+] make sure to change initial screen (no content appears for a second)
+[+] handle continue reading link on the main page
+[+] update basic design and re-title headers
+[+] ensure the initial screen doesn't show NoContent on load
 TO DO: 
 [ ] prevent orientation
 [ ] extract texts to langs.json
-[ ] check naming convention
-[ ] splash screen and app logo
+[ ] check naming conventions
+[ ] add splash screen and app logo
 [ ] reorganize imports
-[ ] add wanted fonts
+[ ] add desired fonts
 [ ] add basic entrance animation
 [ ] disable RTL
+[ ] remove unnecessary logs
