@@ -1,5 +1,11 @@
 {
-    "en": {
-        "continue-read": "Continue reading"
-    }
+  "en": {
+    "continueRead": "Continue reading",
+    "bookNotFound": "Book not found.",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "released": "Released: ",
+    "pages": "Pages: ",
+    "searchPlaceholder": "Search for books..."
+  }
 }

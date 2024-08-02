@@ -3,6 +3,7 @@ DONE:
 [+] handle continue reading link on the main page
 [+] update basic design and re-title headers
 [+] ensure the initial screen doesn't show NoContent on load
+[+] add basic entrance animation
 TO DO: 
 [ ] prevent orientation
 [ ] extract texts to langs.json
@@ -10,6 +11,5 @@ TO DO:
 [ ] add splash screen and app logo
 [ ] reorganize imports
 [ ] add desired fonts
-[ ] add basic entrance animation
 [ ] disable RTL
 [ ] remove unnecessary logs

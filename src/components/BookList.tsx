@@ -16,11 +16,9 @@ const BookList: React.FC<BookListProps> = ({
   onFavoritePress,
   isLoading,
 }) => {
-  console.log('BookList rendered');
-
   const renderItem = useCallback(
-    ({item}: {item: Book}) => (
-      <BookCard book={item} onFavoritePress={onFavoritePress} />
+    ({item, index}: {item: Book; index: number}) => (
+      <BookCard book={item} onFavoritePress={onFavoritePress} index={index} />
     ),
     [onFavoritePress],
   );
@@ -39,14 +37,9 @@ const BookList: React.FC<BookListProps> = ({
           )
         }
         numColumns={2}
-        showsHorizontalScrollIndicator={false}
         snapToInterval={heightPercentageToDP('42.5%')}
         snapToAlignment={'start'}
         decelerationRate={'fast'}
-        removeClippedSubviews={true}
-        initialNumToRender={5}
-        maxToRenderPerBatch={5}
-        windowSize={3}
         renderItem={renderItem}
       />
     </View>
@@ -60,15 +53,6 @@ const styles = StyleSheet.create({
   bookList: {
     height: 'auto',
     marginTop: 10,
-  },
-  noContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: heightPercentageToDP('70%'),
-  },
-  booksFoundText: {
-    color: '#58a6ff',
-    marginHorizontal: 10,
   },
 });
 
