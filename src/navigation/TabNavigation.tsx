@@ -1,18 +1,32 @@
 import React from 'react';
+// navigation
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TabsParamList} from './types';
+// screens
 import BooksScreen from '../screens/BooksScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
+// fixtures
+import {en} from '../fixtures/langs.json';
+// styles
 import BookmarkIcon from '../assets/Bookmark';
 import BookIcon from '../assets/Book';
 import {light} from '../fixtures/colors.json';
-import FavoritesScreen from '../screens/FavoritesScreen';
+// types
+import {TabsParamList} from '../types/navigation';
 
 const bookTabIcon = ({focused}: {focused: boolean}) => (
-  <BookIcon width={20} height={20} color={focused ? 'white' : 'gray'} />
+  <BookIcon
+    width={20}
+    height={20}
+    color={focused ? light.primaryText : light.placeholder}
+  />
 );
 
 const bookmarkTabIcon = ({focused}: {focused: boolean}) => (
-  <BookmarkIcon width={20} height={20} color={focused ? 'white' : 'gray'} />
+  <BookmarkIcon
+    width={20}
+    height={20}
+    color={focused ? light.primaryText : light.placeholder}
+  />
 );
 const Tab = createBottomTabNavigator<TabsParamList>();
 
@@ -25,7 +39,7 @@ const TabNavigation = () => {
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          color: 'white',
+          color: light.primaryText,
         },
       }}>
       <Tab.Screen
@@ -36,9 +50,9 @@ const TabNavigation = () => {
           headerStyle: {
             backgroundColor: light.primary,
           },
-          headerTintColor: 'white',
+          headerTintColor: light.primaryText,
           headerTitleAlign: 'center',
-          headerTitle: 'Potter Pages',
+          headerTitle: en.potterPages,
           tabBarIcon: bookTabIcon,
         }}
       />
@@ -50,9 +64,9 @@ const TabNavigation = () => {
           headerStyle: {
             backgroundColor: light.primary,
           },
-          headerTintColor: 'white',
+          headerTintColor: light.primaryText,
           headerTitleAlign: 'center',
-          headerTitle: 'Favorites',
+          headerTitle: en.favorites,
           tabBarIcon: bookmarkTabIcon,
         }}
       />

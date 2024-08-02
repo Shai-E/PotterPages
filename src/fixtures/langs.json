@@ -6,6 +6,10 @@
     "removeFromFavorites": "Remove from Favorites",
     "released": "Released: ",
     "pages": "Pages: ",
-    "searchPlaceholder": "Search for books..."
+    "searchPlaceholder": "Search for books...",
+    "back": "Back",
+    "bookDetails": "Book Details",
+    "potterPages": "Potter Pages",
+    "favorites": "Favorites"
   }
 }

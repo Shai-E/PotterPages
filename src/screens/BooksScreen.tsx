@@ -24,12 +24,10 @@ const BooksScreen: React.FC = () => {
     if (!books || books.length === 0) {
       dispatch(getBooks());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     updateFilteredBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [books, debouncedSearchKey]);
 
   const updateFilteredBooks = useCallback(() => {
@@ -50,13 +48,9 @@ const BooksScreen: React.FC = () => {
     });
   }, [books, debouncedSearchKey]);
 
-  const onFavoritePress = useCallback(
-    (bookId: string) => {
-      dispatch(toggleFavorite(bookId));
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  const onFavoritePress = useCallback((bookId: string) => {
+    dispatch(toggleFavorite(bookId));
+  }, []);
 
   return (
     <ScreenContainer backgroundColor={light.primary}>

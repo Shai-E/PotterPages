@@ -6,7 +6,7 @@ import NoContent from './NoContent.tsx';
 // styles
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 // types
-import {Book} from '../types/book.ts';
+import {Book} from '../types/entities.ts';
 
 type BookListProps = {
   books: Book[];

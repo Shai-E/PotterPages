@@ -14,7 +14,7 @@ import {useRoute} from '@react-navigation/native';
 // hooks
 import {useToggleFavorite} from '../hooks/useToggleFavorite';
 // types
-import {Book} from '../types/book';
+import {Book} from '../types/entities';
 // styles
 import StarIcon from '../assets/Star';
 import {light} from '../fixtures/colors.json';

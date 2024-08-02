@@ -20,7 +20,7 @@ import {light} from '../fixtures/colors.json';
 // animations
 import Animated, {FadeInDown} from 'react-native-reanimated';
 // types
-import {Book} from '../types/book';
+import {Book} from '../types/entities';
 interface BookCardProps {
   book: Book;
   onFavoritePress: (bookId: string) => void;

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {Book} from '../../types/book';
+import {Book} from '../../types/entities';
 
 const initialState = {
   books: [] as Book[],
