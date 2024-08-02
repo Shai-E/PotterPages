@@ -5,7 +5,7 @@ const initialState = {
   books: [] as Book[],
   booksMap: {} as Record<string, Book>,
   favorites: [] as string[],
-  isLoading: false,
+  isLoading: undefined as boolean | undefined,
   isRehydrated: false,
 };
 
@@ -49,6 +49,11 @@ export const bookSlice = createSlice({
         );
       }
     },
+  },
+  extraReducers: builder => {
+    builder.addCase('persist/REHYDRATE', state => {
+      state.isRehydrated = true;
+    });
   },
 });
 

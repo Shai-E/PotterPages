@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 //redux
 import {useAppDispatch, useAppSelector} from '../hooks/reduxHooks';
 import {getBooks, toggleFavorite} from '../store/reducers/booksReducer';
@@ -10,11 +10,13 @@ import SearchBar from '../components/SearchBar';
 import BookList from '../components/BookList';
 //fixtures
 import {light} from '../fixtures/colors.json';
-//types
 
 const BooksScreen: React.FC = () => {
   const [searchKey, setSearchKey] = useState('');
   const books = useAppSelector(state => state.books.books);
+  const [filteredBooks, setFilteredBooks] = useState(books);
+  const isLoading = useAppSelector(state => state.books.isLoading);
+
   const dispatch = useAppDispatch();
   const debouncedSearchKey = useDebounce(searchKey, 300);
 
@@ -25,14 +27,27 @@ const BooksScreen: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filteredBooks = useMemo(() => {
-    if (debouncedSearchKey === '') {
-      return books;
-    }
+  useEffect(() => {
+    updateFilteredBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [books, debouncedSearchKey]);
 
-    return books.filter(book =>
-      book?.title.toLowerCase().includes(debouncedSearchKey.toLowerCase()),
-    );
+  const updateFilteredBooks = useCallback(() => {
+    setFilteredBooks(prevState => {
+      if (debouncedSearchKey === '') {
+        return books;
+      }
+
+      const nextState = books.filter(book =>
+        book?.title.toLowerCase().includes(debouncedSearchKey.toLowerCase()),
+      );
+
+      if (prevState.length === nextState.length && nextState.length === 0) {
+        return prevState;
+      }
+
+      return nextState;
+    });
   }, [books, debouncedSearchKey]);
 
   const onFavoritePress = useCallback(
@@ -46,7 +61,11 @@ const BooksScreen: React.FC = () => {
   return (
     <ScreenContainer backgroundColor={light.primary}>
       <SearchBar searchKey={searchKey} setSearchKey={setSearchKey} />
-      <BookList books={filteredBooks} onFavoritePress={onFavoritePress} />
+      <BookList
+        books={filteredBooks}
+        onFavoritePress={onFavoritePress}
+        isLoading={isLoading}
+      />
     </ScreenContainer>
   );
 };

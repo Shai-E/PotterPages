@@ -1,27 +1,22 @@
-import React, {useCallback} from 'react';
+import React, {memo, useCallback} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import BookCard from './BookCard';
-import NoContentIcon from '../assets/NoBooks.tsx';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
 import {Book} from '../types/book.ts';
+import NoContent from './NoContent.tsx';
 
 type BookListProps = {
   books: Book[];
   onFavoritePress: (bookId: string) => void;
+  isLoading: boolean | undefined;
 };
 
-const BookList: React.FC<BookListProps> = ({books, onFavoritePress}) => {
-  const NoContent = (
-    <View style={styles.noContent}>
-      <NoContentIcon
-        width={widthPercentageToDP('90%')}
-        height={widthPercentageToDP('90%')}
-      />
-    </View>
-  );
+const BookList: React.FC<BookListProps> = ({
+  books,
+  onFavoritePress,
+  isLoading,
+}) => {
+  console.log('BookList rendered');
 
   const renderItem = useCallback(
     ({item}: {item: Book}) => (
@@ -38,7 +33,11 @@ const BookList: React.FC<BookListProps> = ({books, onFavoritePress}) => {
         data={books}
         keyExtractor={keyExtractor}
         style={styles.bookList}
-        ListEmptyComponent={NoContent}
+        ListEmptyComponent={
+          isLoading ? null : (
+            <NoContent listHeight={heightPercentageToDP('70%')} />
+          )
+        }
         numColumns={2}
         showsHorizontalScrollIndicator={false}
         snapToInterval={heightPercentageToDP('42.5%')}
@@ -73,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BookList;
+export default memo(BookList);

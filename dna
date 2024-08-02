@@ -2,11 +2,12 @@ DONE:
 [+] remove unnecessary packages: reselect, fast-image
 [+] handle continue reading link in main page
 [+] basic design and re-title headers
+[+] make sure to change initial screen (no content appears for a second)
 TO DO: 
-[ ] make sure to change initial screen (no content appears for a second)
+[ ] prevent orientation
+[ ] extract texts to langs.json
+[ ] check naming convention
 [ ] splash screen and app logo
 [ ] reorganize imports
-[ ] check naming convention
-[ ] extract texts to langs.json
 [ ] add wanted fonts
 [ ] disable RTL
