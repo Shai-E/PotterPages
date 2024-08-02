@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+// styles
 import NoContentIcon from '../assets/NoBooks.tsx';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 type NoContentProps = {
   listHeight: number;
@@ -10,10 +11,7 @@ type NoContentProps = {
 const NoContent: React.FC<NoContentProps> = ({listHeight}) => {
   return (
     <View style={[styles.noContent, {height: listHeight}]}>
-      <NoContentIcon
-        width={widthPercentageToDP('90%')}
-        height={widthPercentageToDP('90%')}
-      />
+      <NoContentIcon width={wp('90%')} height={wp('90%')} />
     </View>
   );
 };

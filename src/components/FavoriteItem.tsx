@@ -1,9 +1,13 @@
 import React, {memo} from 'react';
 import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+// redux
 import {useAppSelector} from '../hooks/reduxHooks';
-import StarIcon from '../assets/Star';
+// hooks
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 import {useToggleFavorite} from '../hooks/useToggleFavorite';
+// styles
+import StarIcon from '../assets/Star';
+import {light} from '../fixtures/colors.json';
 
 type FavoriteItemProps = {
   bookId: string;
@@ -36,13 +40,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: light.secondary,
     borderRadius: 8,
     marginVertical: 5,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
   },
   image: {
     width: 50,
@@ -54,9 +54,8 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: light.secondaryText,
   },
-  favoriteIcon: {color: 'gold'},
 });
 
 export default memo(FavoriteItem);

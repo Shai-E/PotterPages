@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   View,
   TextInput,
@@ -6,10 +6,12 @@ import {
   TextInputChangeEventData,
   StyleSheet,
 } from 'react-native';
+// fixtures
+import {en} from '../fixtures/langs.json';
+// styles
 import SearchIcon from '../assets/Search.tsx';
 import {light} from '../fixtures/colors.json';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
-import {en} from '../fixtures/langs.json';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 type SearchBarProps = {
   searchKey: string;
@@ -22,6 +24,10 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
     marginHorizontal: 10,
   });
 
+  const onSeachKeyChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => setSearchKey(e.nativeEvent.text);
+
   return (
     <View style={styles.searchBarContainer}>
       <View style={styles.searchInputContainer}>
@@ -30,9 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
           placeholderTextColor={light.placeholder}
           placeholder={en.searchPlaceholder}
           style={styles.searchInput}
-          onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) =>
-            setSearchKey(e.nativeEvent.text)
-          }
+          onChange={onSeachKeyChange}
         />
       </View>
     </View>
@@ -41,14 +45,14 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    height: heightPercentageToDP('7%'),
+    height: hp('7%'),
     justifyContent: 'flex-end',
   },
   searchInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    height: heightPercentageToDP('6%'),
+    backgroundColor: light.secondary,
+    height: hp('6%'),
     marginHorizontal: 10,
     borderRadius: 10,
     borderWidth: 1,
@@ -59,9 +63,9 @@ const styles = StyleSheet.create({
     borderEndEndRadius: 10,
     paddingHorizontal: 10,
     borderStartWidth: 1,
-    borderColor: '#ccc',
+    borderColor: light.border,
     color: light.placeholder,
   },
 });
 
-export default SearchBar;
+export default memo(SearchBar);

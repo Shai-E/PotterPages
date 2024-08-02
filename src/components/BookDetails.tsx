@@ -7,11 +7,18 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {useRoute} from '@react-navigation/native';
+// redux
 import {useAppSelector} from '../hooks/reduxHooks';
-import {Book} from '../types/book';
-import StarIcon from '../assets/Star';
+// navigation
+import {useRoute} from '@react-navigation/native';
+// hooks
 import {useToggleFavorite} from '../hooks/useToggleFavorite';
+// types
+import {Book} from '../types/book';
+// styles
+import StarIcon from '../assets/Star';
+import {light} from '../fixtures/colors.json';
+// fixtures
 import {en} from '../fixtures/langs.json';
 
 const BookDetails: React.FC = () => {
@@ -53,7 +60,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: light.background,
   },
   bookCover: {
     width: 180,
@@ -61,15 +68,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: light.subtle,
   },
   bookInfo: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: light.secondary,
     padding: 20,
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: light.shadow,
     shadowOpacity: 0.1,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 4},
@@ -80,21 +87,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
-    color: '#333',
+    color: light.secondaryText,
   },
   releaseDate: {
     fontSize: 16,
-    color: '#666',
+    color: light.subtitle,
     marginBottom: 5,
   },
   pages: {
     fontSize: 16,
-    color: '#666',
+    color: light.subtitle,
     marginBottom: 20,
   },
   description: {
     fontSize: 16,
-    color: '#444',
+    color: light.info,
     textAlign: 'center',
     marginBottom: 30,
     lineHeight: 24,
@@ -107,22 +114,7 @@ const styles = StyleSheet.create({
   favoriteButtonText: {
     marginLeft: 10,
     fontSize: 16,
-    color: '#007BFF',
-  },
-  buyButton: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 12,
-    paddingHorizontal: 50,
-    borderRadius: 5,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    shadowOffset: {width: 0, height: 4},
-  },
-  buyButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: light.active,
   },
   centeredView: {
     flex: 1,
@@ -131,7 +123,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 18,
-    color: '#FF0000',
+    color: light.errorText,
   },
 });
 

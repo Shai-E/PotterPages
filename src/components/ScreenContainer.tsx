@@ -1,12 +1,15 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
+// styles
 import {light} from '../fixtures/colors.json';
+
+type BarStyle = 'light-content' | 'dark-content';
 interface Props {
   children: React.ReactNode;
   backgroundColor?: string;
   statusBarColor?: string;
   isScrollable?: boolean;
-  statusBarStyle?: 'light-content' | 'dark-content';
+  statusBarStyle?: BarStyle;
 }
 
 const ScreenContainer = ({

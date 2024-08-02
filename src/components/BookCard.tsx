@@ -6,16 +6,21 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {Book} from '../types/book';
-import StarIcon from '../assets/Star';
+// redux
 import {useAppSelector} from '../hooks/reduxHooks';
-import {
-  heightPercentageToDP,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
+// hooks
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
+// styles
+import StarIcon from '../assets/Star';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import {light} from '../fixtures/colors.json';
+// animations
 import Animated, {FadeInDown} from 'react-native-reanimated';
-
+// types
+import {Book} from '../types/book';
 interface BookCardProps {
   book: Book;
   onFavoritePress: (bookId: string) => void;
@@ -49,7 +54,7 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
               onPress={onFavoritePress.bind(this, book.id)}
               hitSlop={{top: 20, right: 20, bottom: 20, left: 20}}
               style={styles.favoriteIcon}>
-              <StarIcon fill={!isFavorite ? 'transparent' : undefined} />
+              <StarIcon fill={!isFavorite ? light.transparent : undefined} />
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -60,9 +65,9 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
 
 const styles = StyleSheet.create({
   card: {
-    height: heightPercentageToDP('40%'),
-    width: widthPercentageToDP('45%'),
-    margin: widthPercentageToDP('2.5%'),
+    height: hp('40%'),
+    width: wp('45%'),
+    margin: wp('2.5%'),
     borderRadius: 15,
     overflow: 'hidden',
   },
@@ -74,22 +79,22 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: light.overlay,
     flex: 1,
     justifyContent: 'space-between',
     padding: 10,
   },
   infoContainer: {
-    backgroundColor: 'transparent',
+    backgroundColor: light.transparent,
     paddingHorizontal: 10,
   },
   title: {
-    color: '#fff',
+    color: light.primaryText,
     fontSize: 16,
     fontWeight: 'bold',
   },
   date: {
-    color: '#ddd',
+    color: light.subtle,
     fontSize: 12,
     marginTop: 2,
   },

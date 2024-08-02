@@ -1,10 +1,13 @@
 import React from 'react';
+// components
 import ScreenContainer from '../components/ScreenContainer';
 import BookDetails from '../components/BookDetails';
+// styles
+import {light} from '../fixtures/colors.json';
 
 const BookDetailScreen: React.FC = () => {
   return (
-    <ScreenContainer isScrollable backgroundColor={'#f5f5f5'}>
+    <ScreenContainer isScrollable backgroundColor={light.background}>
       <BookDetails />
     </ScreenContainer>
   );
