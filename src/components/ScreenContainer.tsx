@@ -4,13 +4,14 @@ import {SafeAreaView, StatusBar, View} from 'react-native';
 import {light} from '../fixtures/colors.json';
 
 type BarStyle = 'light-content' | 'dark-content';
-interface Props {
+
+type ScreenContainerProps = {
   children: React.ReactNode;
   backgroundColor?: string;
   statusBarColor?: string;
   isScrollable?: boolean;
   statusBarStyle?: BarStyle;
-}
+};
 
 const ScreenContainer = ({
   children,
@@ -18,7 +19,7 @@ const ScreenContainer = ({
   backgroundColor = light.primary,
   statusBarColor = light.primary,
   statusBarStyle = 'light-content',
-}: Props): React.JSX.Element => {
+}: ScreenContainerProps): React.JSX.Element => {
   const backgroundStyle = {
     backgroundColor: backgroundColor,
     flex: 1,
