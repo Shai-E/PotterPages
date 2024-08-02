@@ -5,11 +5,15 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 // fixtures
 import {en} from '../fixtures/langs.json';
+// animations
+import Animated, {ZoomIn, ZoomOutEasyDown} from 'react-native-reanimated';
 // styles
 import SearchIcon from '../assets/Search.tsx';
+import ClearIcon from '../assets/Clear.tsx';
 import {light} from '../fixtures/colors.json';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -28,6 +32,8 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
     e: NativeSyntheticEvent<TextInputChangeEventData>,
   ) => setSearchKey(e.nativeEvent.text);
 
+  const clearSearchKey = () => setSearchKey('');
+
   return (
     <View style={styles.searchBarContainer}>
       <View style={styles.searchInputContainer}>
@@ -37,7 +43,15 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
           placeholder={en.searchPlaceholder}
           style={styles.searchInput}
           onChange={onSeachKeyChange}
+          value={searchKey}
         />
+        {searchKey.length > 0 && (
+          <Animated.View entering={ZoomIn} exiting={ZoomOutEasyDown}>
+            <TouchableOpacity onPress={clearSearchKey}>
+              <ClearIcon style={styles.icon} />
+            </TouchableOpacity>
+          </Animated.View>
+        )}
       </View>
     </View>
   );
@@ -65,6 +79,9 @@ const styles = StyleSheet.create({
     borderStartWidth: 1,
     borderColor: light.border,
     color: light.placeholder,
+  },
+  icon: {
+    marginHorizontal: 10,
   },
 });
 

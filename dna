@@ -8,15 +8,15 @@ DONE:
 [+] check naming conventions
 [+] reorganize imports
 [+] prevent orientation
+[+] add clear logic and icon to search bar
+[+] remove unnecessary logs
+[-] move functions up in heirarchy from list items
+[-] add desired fonts
+[-] add stroke to active tab icon
+[-] implement fastimage
+[-] add exiting animation to favorite items
+[-] change favoriteList to a more mobile like look - with a swipe gesture to remove from favorites
 TO DO: 
 [ ] add splash screen and app logo
-[ ] add desired fonts
 [ ] disable RTL
-[ ] remove unnecessary logs
-[ ] move functions up in heirarchy from list items
-[ ] add clear logic and icon to search bar
 [ ] prompt to action component for empty favorites list
-[ ] add stroke to active tab icon
-[ ] implement fastimage
-[ ] change favoriteList to a more mobile like look - with a swipe gesture to remove from favorites
-[ ] add exiting animation to favorite items
