@@ -39,8 +39,10 @@ const TabNavigation = () => {
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          color: light.primaryText,
         },
+
+        tabBarActiveTintColor: light.primaryText, // Color when the tab is active
+        tabBarInactiveTintColor: light.placeholder, // Color when the tab is inactive
       }}>
       <Tab.Screen
         name="books"

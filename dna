@@ -13,3 +13,7 @@ TO DO:
 [ ] add desired fonts
 [ ] disable RTL
 [ ] remove unnecessary logs
+[ ] move functions up in heirarchy from list items
+[ ] add clear logic and icon to search bar
+[ ] prompt to action component for empty favorites list
+[ ] add stroke to active tab icon
