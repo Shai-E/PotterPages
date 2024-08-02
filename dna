@@ -17,3 +17,6 @@ TO DO:
 [ ] add clear logic and icon to search bar
 [ ] prompt to action component for empty favorites list
 [ ] add stroke to active tab icon
+[ ] implement fastimage
+[ ] change favoriteList to a more mobile like look - with a swipe gesture to remove from favorites
+[ ] add exiting animation to favorite items
