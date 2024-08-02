@@ -4,12 +4,12 @@ DONE:
 [+] update basic design and re-title headers
 [+] ensure the initial screen doesn't show NoContent on load
 [+] add basic entrance animation
+[+] extract texts to langs.json
+[+] check naming conventions
+[+] reorganize imports
+[+] prevent orientation
 TO DO: 
-[ ] prevent orientation
-[ ] extract texts to langs.json
-[ ] check naming conventions
 [ ] add splash screen and app logo
-[ ] reorganize imports
 [ ] add desired fonts
 [ ] disable RTL
 [ ] remove unnecessary logs
