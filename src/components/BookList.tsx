@@ -1,4 +1,4 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 // components
 import BookCard from './BookCard';
@@ -19,14 +19,11 @@ const BookList: React.FC<BookListProps> = ({
   onFavoritePress,
   isLoading,
 }) => {
-  const renderItem = useCallback(
-    ({item, index}: {item: Book; index: number}) => (
-      <BookCard book={item} onFavoritePress={onFavoritePress} index={index} />
-    ),
-    [onFavoritePress],
+  const renderItem = ({item, index}: {item: Book; index: number}) => (
+    <BookCard book={item} onFavoritePress={onFavoritePress} index={index} />
   );
 
-  const keyExtractor = useCallback((item: Book) => 'book' + item.id, []);
+  const keyExtractor = (item: Book) => 'book' + item.id;
 
   return (
     <View style={styles.flatlistContainer}>
