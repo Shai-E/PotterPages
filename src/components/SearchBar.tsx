@@ -10,7 +10,7 @@ import {
 // fixtures
 import {en} from '../fixtures/langs.json';
 // animations
-import Animated, {ZoomIn, ZoomOutEasyDown} from 'react-native-reanimated';
+import Animated, {ZoomIn, ZoomOut} from 'react-native-reanimated';
 // styles
 import SearchIcon from '../assets/Search.tsx';
 import ClearIcon from '../assets/Clear.tsx';
@@ -46,7 +46,7 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
           value={searchKey}
         />
         {searchKey.length > 0 && (
-          <Animated.View entering={ZoomIn} exiting={ZoomOutEasyDown}>
+          <Animated.View entering={ZoomIn} exiting={ZoomOut}>
             <TouchableOpacity onPress={clearSearchKey}>
               <ClearIcon style={styles.icon} />
             </TouchableOpacity>
