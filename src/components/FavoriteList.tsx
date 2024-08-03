@@ -18,8 +18,7 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
         data={favorites}
         keyExtractor={item => 'favorite' + item}
         renderItem={renderItem}
-        initialNumToRender={10}
-        removeClippedSubviews={true}
+        contentContainerStyle={styles.contentContainer}
         ListEmptyComponent={<EmptyFavoritesPrompt />}
       />
     </View>
@@ -29,6 +28,9 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
 const styles = StyleSheet.create({
   listContainer: {
     padding: 10,
+    flex: 1,
+  },
+  contentContainer: {
     flex: 1,
   },
 });

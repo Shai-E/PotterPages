@@ -33,15 +33,14 @@ const BookList: React.FC<BookListProps> = ({
       <FlatList
         data={books}
         keyExtractor={keyExtractor}
-        style={styles.bookList}
-        ListEmptyComponent={
-          isLoading ? null : <NoContent listHeight={hp('70%')} />
-        }
+        renderItem={renderItem}
+        ListEmptyComponent={isLoading ? null : <NoContent />}
         numColumns={2}
+        style={styles.bookList}
+        contentContainerStyle={styles.contentContainer}
         snapToInterval={hp('42.5%')}
         snapToAlignment={'start'}
         decelerationRate={'fast'}
-        renderItem={renderItem}
       />
     </View>
   );
@@ -51,8 +50,10 @@ const styles = StyleSheet.create({
   flatlistContainer: {
     flex: 1,
   },
+  contentContainer: {
+    flex: 1,
+  },
   bookList: {
-    height: 'auto',
     marginTop: 10,
   },
 });
