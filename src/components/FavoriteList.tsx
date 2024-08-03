@@ -10,13 +10,14 @@ type FavoriteListProps = {
 };
 
 const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
+  const keyExtractor = (item: string) => 'favorite' + item;
   const renderItem = ({item}: {item: string}) => <FavoriteItem bookId={item} />;
 
   return (
     <View style={styles.listContainer}>
       <FlatList
         data={favorites}
-        keyExtractor={item => 'favorite' + item}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
         contentContainerStyle={styles.contentContainer}
         ListEmptyComponent={<EmptyFavoritesPrompt />}
