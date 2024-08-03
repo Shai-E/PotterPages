@@ -37,7 +37,7 @@ const BookList: React.FC<BookListProps> = ({
         ListEmptyComponent={isLoading ? null : <NoContent />}
         numColumns={2}
         style={styles.bookList}
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={books.length === 0 && styles.contentContainer}
         snapToInterval={hp('42.5%')}
         snapToAlignment={'start'}
         decelerationRate={'fast'}
