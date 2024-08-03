@@ -10,6 +10,7 @@ DONE:
 [+] prevent orientation
 [+] add clear logic and icon to search bar
 [+] remove unnecessary logs
+[+] prompt to action component for empty favorites list
 [-] move functions up in heirarchy from list items
 [-] add desired fonts
 [-] add stroke to active tab icon
@@ -19,4 +20,3 @@ DONE:
 TO DO: 
 [ ] add splash screen and app logo
 [ ] disable RTL
-[ ] prompt to action component for empty favorites list
