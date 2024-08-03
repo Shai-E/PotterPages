@@ -19,11 +19,10 @@ const BookList: React.FC<BookListProps> = ({
   onFavoritePress,
   isLoading,
 }) => {
+  const keyExtractor = (item: Book) => 'book' + item.id;
   const renderItem = ({item, index}: {item: Book; index: number}) => (
     <BookCard book={item} onFavoritePress={onFavoritePress} index={index} />
   );
-
-  const keyExtractor = (item: Book) => 'book' + item.id;
 
   return (
     <View style={styles.flatlistContainer}>
