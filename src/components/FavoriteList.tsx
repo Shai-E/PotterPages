@@ -2,9 +2,8 @@ import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 // components
 import FavoriteItem from './FavoriteItem';
-import NoContent from './NoContent';
 // styles
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import EmptyFavoritesPrompt from './EmptyFavoritesPrompt';
 
 type FavoriteListProps = {
   favorites: string[];
@@ -21,7 +20,7 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
         renderItem={renderItem}
         initialNumToRender={10}
         removeClippedSubviews={true}
-        ListEmptyComponent={<NoContent listHeight={hp('80%')} />}
+        ListEmptyComponent={<EmptyFavoritesPrompt />}
       />
     </View>
   );
@@ -30,6 +29,7 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
 const styles = StyleSheet.create({
   listContainer: {
     padding: 10,
+    flex: 1,
   },
 });
 

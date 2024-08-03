@@ -1,5 +1,7 @@
+import {NavigatorScreenParams} from '@react-navigation/native';
+
 export type RootStackParamList = {
-  tabs: undefined;
+  tabs: NavigatorScreenParams<TabsParamList>;
   main: {
     screen: keyof MainStackParamList;
     params: MainStackParamList[keyof MainStackParamList];

@@ -10,6 +10,9 @@
     "back": "Back",
     "bookDetails": "Book Details",
     "potterPages": "Potter Pages",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "noFavorites": "Your favorites list is empty.",
+    "browseBooks": "Browse through the collection and add your favorite books!",
+    "goToBooks": "Go to Books"
   }
 }

@@ -15,3 +15,14 @@ export const useNavigateToBookDetail = () => {
 
   return navigateToBookDetail;
 };
+
+export const useNavigateToBooks = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const navigateToBooks = () => {
+    navigation.navigate('tabs', {screen: 'books'});
+  };
+
+  return navigateToBooks;
+};
