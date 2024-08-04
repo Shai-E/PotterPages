@@ -1,79 +1,156 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# IsracardDemoShaiEliav
 
-> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This is a React Native project using modern libraries and tools for building mobile applications. This project includes state management using Redux, navigation using React Navigation, and various utility libraries to enhance the development process.
 
-## Step 1: Start the Metro Server
+## Table of Contents
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Project Structure](#project-structure)
+- [Dependencies](#dependencies)
+- [DevDependencies](#devdependencies)
+- [Scripts](#scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Installation
 
-```bash
-# using npm
-npm start
+To get started with this project, follow the steps below:
 
-# OR using Yarn
-yarn start
-```
+1. **Clone the repository:**
 
-## Step 2: Start your Application
+   \`\`\`bash
+   git clone https://github.com/your-repo/IsracardDemoShaiEliav.git
+   \`\`\`
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+2. **Navigate to the project directory:**
 
-### For Android
+   \`\`\`bash
+   cd IsracardDemoShaiEliav
+   \`\`\`
 
-```bash
-# using npm
+3. **Install the dependencies:**
+
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+   or
+
+   \`\`\`bash
+   yarn install
+   \`\`\`
+
+## Running the Project
+
+### Android
+
+To run the project on an Android device or emulator, use:
+
+\`\`\`bash
 npm run android
+\`\`\`
 
-# OR using Yarn
-yarn android
-```
+### iOS
 
-### For iOS
+To run the project on an iOS device or simulator, use:
 
-```bash
-# using npm
+\`\`\`bash
 npm run ios
+\`\`\`
 
-# OR using Yarn
-yarn ios
-```
+### Start Metro Bundler
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+To start the Metro bundler, which is required for React Native to function:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+\`\`\`bash
+npm run start
+\`\`\`
 
-## Step 3: Modifying your App
+### Linting
 
-Now that you have successfully run the app, let's modify it.
+To check the code for linting errors:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+\`\`\`bash
+npm run lint
+\`\`\`
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### Testing
 
-## Congratulations! :tada:
+To run the test suite:
 
-You've successfully run and modified your React Native App. :partying_face:
+\`\`\`bash
+npm run test
+\`\`\`
 
-### Now what?
+## Project Structure
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+The project's folder structure follows a standard React Native setup, organized as follows:
 
-# Troubleshooting
+\`\`\`
+/IsracardDemoShaiEliav
+├── /android         # Android-specific files
+├── /ios             # iOS-specific files
+├── /src             # Application source code
+│   ├── /components  # Reusable components
+│   ├── /navigation  # Navigation setup
+│   ├── /store       # Redux-related files
+│   ├── /screens     # Application screens
+│   ├── /fixtures    # Application constants
+│   ├── /hooks       # Custom hooks
+│   ├── /utils       # Utilities
+│   ├── /types       # Application types and interfaces
+│   └── /assets      # Images, fonts, etc.
+├── App.tsx          # Entry point for the app
+├── package.json     # Project dependencies and scripts
+└── README.md        # This file
+\`\`\`
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Dependencies
 
-# Learn More
+This project uses the following main dependencies:
 
-To learn more about React Native, take a look at the following resources:
+- **React Native**: \`^0.74.3\`
+- **React**: \`^18.2.0\`
+- **Redux**: \`^5.0.1\` and **React-Redux**: \`^9.1.2\`
+- **Redux Toolkit**: \`^2.2.7\`
+- **Redux Persist**: \`^6.0.0\`
+- **Redux Saga**: \`^1.3.0\`
+- **React Navigation**: Native stack and bottom tabs
+- **Async Storage**: \`^1.24.0\`
+- **React Native Gesture Handler**: \`^2.17.1\`
+- **React Native Reanimated**: \`^3.14.0\`
+- **React Native SVG**: \`^15.4.0\`
+- **React Native Responsive Screen**: \`^1.4.2\`
+- **React Native Safe Area Context**: \`^4.10.8\`
+- **React Native Splash Screen**: \`^3.3.0\`
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## DevDependencies
+
+This project uses the following devDependencies for development:
+
+- **TypeScript**: \`^5.0.4\`
+- **Babel**: Core and preset configurations
+- **ESLint**: \`^8.19.0\`
+- **Prettier**: \`2.8.8\` for code formatting
+- **Jest**: \`^29.6.3\` for testing
+- **React Native SVG Transformer**: \`^1.5.0\` for handling SVGs
+
+## Scripts
+
+The following scripts are available in this project:
+
+- **\`npm run android\`**: Runs the Android app.
+- **\`npm run ios\`**: Runs the iOS app.
+- **\`npm run lint\`**: Runs ESLint to check for code quality issues.
+- **\`npm run start\`**: Starts the Metro bundler.
+- **\`npm run test\`**: Runs the test suite using Jest.
+
+## Contributing
+
+This is a take-home assignment. There's no actual reason for you to contribute here. If you'd like to contribute to this project, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
