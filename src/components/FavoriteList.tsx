@@ -19,7 +19,9 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
         data={favorites}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={
+          favorites.length === 0 && styles.contentContainer
+        }
         ListEmptyComponent={<EmptyFavoritesPrompt />}
       />
     </View>
