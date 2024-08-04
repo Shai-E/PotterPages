@@ -10,3 +10,5 @@ export interface Book {
   index: number;
   isFavorite?: boolean;
 }
+
+export type IsLoading = boolean | undefined;

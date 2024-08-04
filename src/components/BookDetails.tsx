@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 // redux
 import {useAppSelector} from '../hooks/reduxHooks';
+import {selectBookById} from '../store/selectors';
 // navigation
 import {useRoute} from '@react-navigation/native';
 // hooks
@@ -24,7 +25,7 @@ import {en} from '../fixtures/langs.json';
 const BookDetails: React.FC = () => {
   const route = useRoute();
   const {bookId} = route.params as {bookId: string};
-  const book = useAppSelector(state => state.books.booksMap[bookId]) as Book;
+  const book = useAppSelector(state => selectBookById(state, bookId)) as Book;
   const handleToggleFavorite = useToggleFavorite();
 
   if (!book) {

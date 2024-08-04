@@ -6,12 +6,12 @@ import NoContent from './NoContent.tsx';
 // styles
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 // types
-import {Book} from '../types/entities.ts';
+import {Book, IsLoading} from '../types/entities.ts';
 
 type BookListProps = {
   books: Book[];
   onFavoritePress: (bookId: string) => void;
-  isLoading: boolean | undefined;
+  isLoading: IsLoading;
 };
 
 const BookList: React.FC<BookListProps> = ({
@@ -25,7 +25,7 @@ const BookList: React.FC<BookListProps> = ({
   );
 
   return (
-    <View style={styles.flatlistContainer}>
+    <View style={styles.container}>
       <FlatList
         data={books}
         keyExtractor={keyExtractor}
@@ -33,7 +33,7 @@ const BookList: React.FC<BookListProps> = ({
         ListEmptyComponent={isLoading ? null : <NoContent />}
         numColumns={2}
         style={styles.bookList}
-        contentContainerStyle={books.length === 0 && styles.contentContainer}
+        contentContainerStyle={books.length === 0 && styles.container}
         snapToInterval={hp('42.5%')}
         snapToAlignment={'start'}
         decelerationRate={'fast'}
@@ -43,10 +43,7 @@ const BookList: React.FC<BookListProps> = ({
 };
 
 const styles = StyleSheet.create({
-  flatlistContainer: {
-    flex: 1,
-  },
-  contentContainer: {
+  container: {
     flex: 1,
   },
   bookList: {

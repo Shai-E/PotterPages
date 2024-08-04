@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 // redux
 import {useAppSelector} from '../hooks/reduxHooks';
+import {selectBookById} from '../store/selectors';
 // hooks
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 import {useToggleFavorite} from '../hooks/useToggleFavorite';
@@ -14,7 +15,7 @@ type FavoriteItemProps = {
 };
 
 const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
-  const favorite = useAppSelector(state => state.books.booksMap[bookId]);
+  const favorite = useAppSelector(state => selectBookById(state, bookId));
 
   const handleToggleFavorite = useToggleFavorite();
 

@@ -2,13 +2,13 @@ import {createSlice} from '@reduxjs/toolkit';
 // utils
 import {genUniqueID} from '../../utils/genUniqueId';
 // types
-import {Book} from '../../types/entities';
+import {Book, IsLoading} from '../../types/entities';
 
 const initialState = {
   books: [] as Book[],
   booksMap: {} as Record<string, Book>,
   favorites: [] as string[],
-  isLoading: undefined as boolean | undefined,
+  isLoading: undefined as IsLoading,
 };
 
 export const bookSlice = createSlice({

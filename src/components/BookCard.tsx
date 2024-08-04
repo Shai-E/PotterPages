@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 // redux
 import {useAppSelector} from '../hooks/reduxHooks';
+import {selectIsFavorite} from '../store/selectors';
 // hooks
 import {useNavigateToBookDetail} from '../hooks/navigationHooks';
 // styles
@@ -29,9 +30,7 @@ type BookCardProps = {
 };
 
 const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
-  const isFavorite = useAppSelector(
-    state => state.books.booksMap[book.id]?.isFavorite,
-  );
+  const isFavorite = useAppSelector(state => selectIsFavorite(state, book.id));
 
   const navigateToBookDetail = useNavigateToBookDetail();
 
