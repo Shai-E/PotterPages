@@ -9,9 +9,11 @@ import AppNavigation from './src/navigation/AppNavigation';
 // styles
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 import {light} from './src/fixtures/colors.json';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
   useLayoutEffect(() => {
+    SplashScreen.hide();
     try {
       Platform.OS === 'android' && changeNavigationBarColor(light.primary);
     } catch (e) {
