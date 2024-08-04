@@ -13,7 +13,7 @@ import {selectBookById} from '../store/selectors';
 // navigation
 import {useRoute} from '@react-navigation/native';
 // hooks
-import {useToggleFavorite} from '../hooks/useToggleFavorite';
+import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
 // types
 import {Book} from '../types/entities';
 // styles
@@ -26,7 +26,7 @@ const BookDetails: React.FC = () => {
   const route = useRoute();
   const {bookId} = route.params as {bookId: string};
   const book = useAppSelector(state => selectBookById(state, bookId)) as Book;
-  const handleToggleFavorite = useToggleFavorite();
+  const handleToggleFavorite = useToggleFavoriteCB();
 
   if (!book) {
     return (

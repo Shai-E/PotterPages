@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 // hooks
-import {useNavigateToBooks} from '../hooks/navigationHooks';
+import {useNavigateToBooksCB} from '../hooks/navigationHooks';
 // fixtures
 import {en} from '../fixtures/langs.json';
 // styles
 import {light} from '../fixtures/colors.json';
 
 const EmptyFavoritesPrompt: React.FC = () => {
-  const handleNavigateToBooks = useNavigateToBooks();
+  const handleNavigateToBooks = useNavigateToBooksCB();
 
   return (
     <View style={styles.container}>

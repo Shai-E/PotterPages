@@ -1,7 +1,7 @@
-import {useAppDispatch} from '../hooks/reduxHooks';
+import {useAppDispatch} from './reduxHooks';
 import {toggleFavorite} from '../store/reducers/booksReducer';
 
-export const useToggleFavorite = () => {
+export const useToggleFavoriteCB = () => {
   const dispatch = useAppDispatch();
 
   return (bookId: string) => {

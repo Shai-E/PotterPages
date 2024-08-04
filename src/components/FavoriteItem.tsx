@@ -4,8 +4,8 @@ import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {useAppSelector} from '../hooks/reduxHooks';
 import {selectBookById} from '../store/selectors';
 // hooks
-import {useNavigateToBookDetail} from '../hooks/navigationHooks';
-import {useToggleFavorite} from '../hooks/useToggleFavorite';
+import {useNavigateToBookDetailCB} from '../hooks/navigationHooks';
+import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
 // styles
 import StarIcon from '../assets/Star';
 import {light} from '../fixtures/colors.json';
@@ -17,9 +17,9 @@ type FavoriteItemProps = {
 const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
   const favorite = useAppSelector(state => selectBookById(state, bookId));
 
-  const handleToggleFavorite = useToggleFavorite();
+  const handleToggleFavorite = useToggleFavoriteCB();
 
-  const navigateToBookDetail = useNavigateToBookDetail();
+  const navigateToBookDetail = useNavigateToBookDetailCB();
 
   return (
     <TouchableOpacity

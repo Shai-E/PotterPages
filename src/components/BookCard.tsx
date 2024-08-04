@@ -10,7 +10,7 @@ import {
 import {useAppSelector} from '../hooks/reduxHooks';
 import {selectIsFavorite} from '../store/selectors';
 // hooks
-import {useNavigateToBookDetail} from '../hooks/navigationHooks';
+import {useNavigateToBookDetailCB} from '../hooks/navigationHooks';
 // styles
 import StarIcon from '../assets/Star';
 import {
@@ -32,7 +32,7 @@ type BookCardProps = {
 const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
   const isFavorite = useAppSelector(state => selectIsFavorite(state, book.id));
 
-  const navigateToBookDetail = useNavigateToBookDetail();
+  const navigateToBookDetail = useNavigateToBookDetailCB();
 
   return (
     <Animated.View entering={FadeInDown.delay(120 * index)}>

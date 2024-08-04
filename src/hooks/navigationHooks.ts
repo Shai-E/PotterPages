@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/navigation';
 
-export const useNavigateToBookDetail = () => {
+export const useNavigateToBookDetailCB = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -16,7 +16,7 @@ export const useNavigateToBookDetail = () => {
   return navigateToBookDetail;
 };
 
-export const useNavigateToBooks = () => {
+export const useNavigateToBooksCB = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
