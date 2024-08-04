@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 // styles
 import {light} from '../fixtures/colors.json';
 
@@ -20,26 +20,20 @@ const ScreenContainer = ({
   statusBarColor = light.primary,
   statusBarStyle = 'light-content',
 }: ScreenContainerProps): React.JSX.Element => {
-  const backgroundStyle = {
-    backgroundColor: backgroundColor,
-    flex: 1,
-  };
-
-  if (isScrollable) {
-    return (
-      <View style={backgroundStyle}>
-        <StatusBar barStyle={statusBarStyle} backgroundColor={statusBarColor} />
-        {children}
-      </View>
-    );
-  }
+  const DynamicView = isScrollable ? View : SafeAreaView;
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <DynamicView style={[styles.container, {backgroundColor}]}>
       <StatusBar barStyle={statusBarStyle} backgroundColor={statusBarColor} />
       {children}
-    </SafeAreaView>
+    </DynamicView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default ScreenContainer;

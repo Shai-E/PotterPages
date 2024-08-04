@@ -1,4 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
+// utils
+import {genUniqueID} from '../../utils/genUniqueId';
+// types
 import {Book} from '../../types/entities';
 
 const initialState = {
@@ -6,11 +9,6 @@ const initialState = {
   booksMap: {} as Record<string, Book>,
   favorites: [] as string[],
   isLoading: undefined as boolean | undefined,
-  isRehydrated: false,
-};
-
-const genUUID = () => {
-  return Math.floor(Math.random() * 100000000000000).toString();
 };
 
 export const bookSlice = createSlice({
@@ -23,7 +21,7 @@ export const bookSlice = createSlice({
     getBooksSuccess: (state, action) => {
       state.booksMap = {};
       for (const book of action.payload) {
-        const id = genUUID();
+        const id = genUniqueID();
         state.booksMap[id] = {
           ...book,
           isFavorite: false,
@@ -49,11 +47,6 @@ export const bookSlice = createSlice({
         );
       }
     },
-  },
-  extraReducers: builder => {
-    builder.addCase('persist/REHYDRATE', state => {
-      state.isRehydrated = true;
-    });
   },
 });
 
