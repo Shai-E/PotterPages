@@ -11,12 +11,9 @@ DONE:
 [+] add clear logic and icon to search bar
 [+] remove unnecessary logs
 [+] prompt to action component for empty favorites list
-[-] move functions up in heirarchy from list items
+[+] add splash screen and app logo
 [-] add desired fonts
-[-] add stroke to active tab icon
 [-] implement fastimage
-[-] add exiting animation to favorite items
 [-] change favoriteList to a more mobile like look - with a swipe gesture to remove from favorites
+[-] disable RTL
 TO DO: 
-[ ] add splash screen and app logo
-[ ] disable RTL
