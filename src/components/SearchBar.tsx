@@ -47,7 +47,9 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
         />
         {searchKey.length > 0 && (
           <Animated.View entering={ZoomIn} exiting={ZoomOut}>
-            <TouchableOpacity onPress={clearSearchKey}>
+            <TouchableOpacity
+              onPress={clearSearchKey}
+              hitSlop={{top: 15, right: 15, bottom: 15, left: 15}}>
               <ClearIcon style={styles.icon} />
             </TouchableOpacity>
           </Animated.View>
