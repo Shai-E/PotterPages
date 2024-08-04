@@ -12,7 +12,6 @@ This is a React Native project using modern libraries and tools for building mob
 - [DevDependencies](#devdependencies)
 - [Scripts](#scripts)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
@@ -150,7 +149,3 @@ The following scripts are available in this project:
 ## Contributing
 
 This is a take-home assignment. There's no actual reason for you to contribute here. If you'd like to contribute to this project, please fork the repository and use a feature branch. Pull requests are warmly welcome.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
