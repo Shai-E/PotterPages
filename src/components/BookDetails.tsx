@@ -45,7 +45,7 @@ const BookDetails: React.FC = () => {
         <TouchableOpacity
           style={styles.favoriteButton}
           onPress={handleToggleFavorite.bind(this, book.id)}>
-          <StarIcon fill={!book.isFavorite ? 'transparent' : undefined} />
+          <StarIcon fill={!book.isFavorite ? light.transparent : undefined} />
           <Text style={styles.favoriteButtonText}>
             {book.isFavorite ? en.removeFromFavorites : en.addToFavorites}
           </Text>
