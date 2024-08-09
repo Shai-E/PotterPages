@@ -10,7 +10,7 @@ type FavoriteListProps = {
 };
 
 const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
-  const keyExtractor = (item: string) => 'favorite' + item;
+  const keyExtractor = (bookId: string) => 'favorite' + bookId;
   const renderItem = ({item}: {item: string}) => <FavoriteItem bookId={item} />;
 
   return (
