@@ -7,7 +7,7 @@ import TabNavigation from './TabNavigation';
 import MainNavigation from './MainNavigation';
 // localization
 import {useTranslation} from 'react-i18next';
-import {TranslationKeys} from '../fixtures/keys';
+import {TranslationKeys} from '../services/localization/keys';
 // styles
 import {light} from '../fixtures/colors.json';
 // types

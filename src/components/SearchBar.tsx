@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 // localization
 import {useTranslation} from 'react-i18next';
-import {TranslationKeys} from '../fixtures/keys.ts';
+import {TranslationKeys} from '../services/localization/keys.ts';
 // animations
 import Animated, {ZoomIn, ZoomOut} from 'react-native-reanimated';
 // styles

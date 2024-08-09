@@ -1,12 +1,14 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Button, StyleSheet} from 'react-native';
+// components
+import TextElement from './reusable/TextElement';
 // hooks
 import {useNavigateToBooksCB} from '../hooks/navigationHooks';
 // localization
 import {useTranslation} from 'react-i18next';
 // styles
 import {light} from '../fixtures/colors.json';
-import {TranslationKeys} from '../fixtures/keys';
+import {TranslationKeys} from '../services/localization/keys';
 
 const EmptyFavoritesPrompt: React.FC = () => {
   const {t} = useTranslation();
@@ -14,8 +16,12 @@ const EmptyFavoritesPrompt: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.message}>{t(TranslationKeys.noFavorites)}</Text>
-      <Text style={styles.subMessage}>{t(TranslationKeys.browseBooks)}</Text>
+      <TextElement style={styles.message}>
+        {t(TranslationKeys.noFavorites)}
+      </TextElement>
+      <TextElement style={styles.subMessage}>
+        {t(TranslationKeys.browseBooks)}
+      </TextElement>
       <Button
         title={t(TranslationKeys.goToBooks)}
         onPress={handleNavigateToBooks}

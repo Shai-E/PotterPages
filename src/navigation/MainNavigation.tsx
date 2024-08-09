@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BookDetailScreen from '../screens/BookDetailScreen';
 // localization
 import {useTranslation} from 'react-i18next';
-import {TranslationKeys} from '../fixtures/keys';
+import {TranslationKeys} from '../services/localization/keys';
 // styles
 import {light} from '../fixtures/colors.json';
 

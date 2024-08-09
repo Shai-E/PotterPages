@@ -1,8 +1,10 @@
 import React, {memo} from 'react';
-import {Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 // redux
 import {useAppSelector} from '../hooks/reduxHooks';
 import {selectBookById} from '../store/selectors';
+// components
+import TextElement from './reusable/TextElement';
 // hooks
 import {useNavigateToBookDetailCB} from '../hooks/navigationHooks';
 import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
@@ -26,7 +28,7 @@ const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
       style={styles.container}
       onPress={navigateToBookDetail.bind(this, favorite.id)}>
       <Image source={{uri: favorite.cover}} style={styles.image} />
-      <Text style={styles.title}>{favorite.title}</Text>
+      <TextElement style={styles.title}>{favorite.title}</TextElement>
       <TouchableOpacity
         onPress={handleToggleFavorite.bind(this, favorite.id)}
         hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}>

@@ -1,7 +1,6 @@
 import React, {memo} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
@@ -9,6 +8,8 @@ import {
 // redux
 import {useAppSelector} from '../hooks/reduxHooks';
 import {selectIsFavorite} from '../store/selectors';
+// components
+import TextElement from './reusable/TextElement';
 // hooks
 import {useNavigateToBookDetailCB} from '../hooks/navigationHooks';
 // styles
@@ -47,8 +48,8 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
           resizeMode={'cover'}>
           <View style={styles.overlay}>
             <View style={styles.infoContainer}>
-              <Text style={styles.title}>{book.title}</Text>
-              <Text style={styles.date}>{book.releaseDate}</Text>
+              <TextElement style={styles.title}>{book.title}</TextElement>
+              <TextElement style={styles.date}>{book.releaseDate}</TextElement>
             </View>
             <TouchableOpacity
               onPress={onFavoritePress.bind(this, book.id)}
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
     color: light.primaryText,
     fontSize: 16,
     fontWeight: 'bold',
+    fontStyle: 'italic',
   },
   date: {
     color: light.subtle,

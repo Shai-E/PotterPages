@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   ScrollView,
@@ -12,11 +11,13 @@ import {useAppSelector} from '../hooks/reduxHooks';
 import {selectBookById} from '../store/selectors';
 // navigation
 import {useRoute} from '@react-navigation/native';
+// components
+import TextElement from './reusable/TextElement';
 // hooks
 import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
 // localization
 import {useTranslation} from 'react-i18next';
-import {TranslationKeys} from '../fixtures/keys';
+import {TranslationKeys} from '../services/localization/keys';
 // styles
 import StarIcon from '../assets/Star';
 import {light} from '../fixtures/colors.json';
@@ -33,7 +34,9 @@ const BookDetails: React.FC = () => {
   if (!book) {
     return (
       <View style={styles.centeredView}>
-        <Text style={styles.errorText}>{t(TranslationKeys.bookNotFound)}</Text>
+        <TextElement style={styles.errorText}>
+          {t(TranslationKeys.bookNotFound)}
+        </TextElement>
       </View>
     );
   }
@@ -42,26 +45,26 @@ const BookDetails: React.FC = () => {
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <Image source={{uri: book.cover}} style={styles.bookCover} />
       <View style={styles.bookInfo}>
-        <Text style={styles.title}>{book.title}</Text>
-        <Text style={styles.releaseDate}>
+        <TextElement style={styles.title}>{book.title}</TextElement>
+        <TextElement style={styles.releaseDate}>
           {t(TranslationKeys.released) + book.releaseDate}
-        </Text>
-        <Text style={styles.pages}>
+        </TextElement>
+        <TextElement style={styles.pages}>
           {t(TranslationKeys.pages) + book.pages}
-        </Text>
+        </TextElement>
         <TouchableOpacity
           style={styles.favoriteButton}
           onPress={handleToggleFavorite.bind(this, book.id)}>
           <StarIcon fill={!book.isFavorite ? light.transparent : undefined} />
-          <Text style={styles.favoriteButtonText}>
+          <TextElement style={styles.favoriteButtonText}>
             {t(
               TranslationKeys[
                 book.isFavorite ? 'removeFromFavorites' : 'addToFavorites'
               ],
             )}
-          </Text>
+          </TextElement>
         </TouchableOpacity>
-        <Text style={styles.description}>{book.description}</Text>
+        <TextElement style={styles.description}>{book.description}</TextElement>
       </View>
     </ScrollView>
   );

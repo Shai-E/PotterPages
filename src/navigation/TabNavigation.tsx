@@ -6,7 +6,7 @@ import BooksScreen from '../screens/BooksScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 // localization
 import {useTranslation} from 'react-i18next';
-import {TranslationKeys} from '../fixtures/keys';
+import {TranslationKeys} from '../services/localization/keys';
 // styles
 import BookmarkIcon from '../assets/Bookmark';
 import BookIcon from '../assets/Book';
