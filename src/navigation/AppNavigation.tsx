@@ -11,7 +11,7 @@ import {TranslationKeys} from '../services/localization/keys';
 // styles
 import {light} from '../fixtures/colors.json';
 // types
-import {RootStackParamList} from '../types/navigation';
+import {RootStackParamList, ScreenNames} from '../types/navigation';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,14 +29,15 @@ const AppNavigation = () => {
           headerTintColor: light.primaryText,
         }}>
         <RootStack.Screen
-          name={t(TranslationKeys.tabs) as keyof RootStackParamList}
+          name={ScreenNames.TABS}
           component={TabNavigation}
-          options={{headerShown: false}}
+          options={{title: t(TranslationKeys.tabs), headerShown: false}}
         />
         <RootStack.Screen
-          name={t(TranslationKeys.main) as keyof RootStackParamList}
+          name={ScreenNames.MAIN}
           component={MainNavigation}
           options={{
+            title: t(TranslationKeys.main),
             headerShown: true,
             headerTitle: t(TranslationKeys.bookDetails),
           }}

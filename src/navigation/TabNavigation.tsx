@@ -12,7 +12,7 @@ import BookmarkIcon from '../assets/Bookmark';
 import BookIcon from '../assets/Book';
 import {light} from '../fixtures/colors.json';
 // types
-import {TabsParamList} from '../types/navigation';
+import {ScreenNames, TabsParamList} from '../types/navigation';
 
 const bookTabIcon = ({focused}: {focused: boolean}) => (
   <BookIcon
@@ -47,9 +47,10 @@ const TabNavigation = () => {
         tabBarInactiveTintColor: light.placeholder, // Color when the tab is inactive
       }}>
       <Tab.Screen
-        name={t(TranslationKeys.books) as keyof TabsParamList}
+        name={ScreenNames.BOOKS}
         component={BooksScreen}
         options={{
+          title: t(TranslationKeys.books),
           headerShown: true,
           headerStyle: {
             backgroundColor: light.primary,
@@ -61,9 +62,10 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name={t(TranslationKeys.favorites) as keyof TabsParamList}
+        name={ScreenNames.FAVORITES}
         component={FavoritesScreen}
         options={{
+          title: t(TranslationKeys.favorites),
           headerShown: true,
           headerStyle: {
             backgroundColor: light.primary,

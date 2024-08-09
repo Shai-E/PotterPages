@@ -16,3 +16,11 @@ export type TabsParamList = {
 export type MainStackParamList = {
   details: {bookId: string};
 };
+
+export enum ScreenNames {
+  FAVORITES = 'favorites',
+  BOOKS = 'books',
+  DETAILS = 'details',
+  TABS = 'tabs',
+  MAIN = 'main',
+}

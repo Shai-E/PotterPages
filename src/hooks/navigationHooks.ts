@@ -1,14 +1,15 @@
 import {useNavigation} from '@react-navigation/native';
+// types
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../types/navigation';
+import {RootStackParamList, ScreenNames} from '../types/navigation';
 
 export const useNavigateToBookDetailCB = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const navigateToBookDetail = (bookId: string) => {
-    navigation.navigate('main', {
-      screen: 'details',
+    navigation.navigate(ScreenNames.MAIN, {
+      screen: ScreenNames.DETAILS,
       params: {bookId},
     });
   };
@@ -21,7 +22,7 @@ export const useNavigateToBooksCB = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const navigateToBooks = () => {
-    navigation.navigate('tabs', {screen: 'books'});
+    navigation.navigate(ScreenNames.TABS, {screen: ScreenNames.BOOKS});
   };
 
   return navigateToBooks;
