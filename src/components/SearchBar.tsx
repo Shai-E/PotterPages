@@ -7,8 +7,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-// fixtures
-import {en} from '../fixtures/langs.json';
+// localization
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../fixtures/keys.ts';
 // animations
 import Animated, {ZoomIn, ZoomOut} from 'react-native-reanimated';
 // styles
@@ -23,6 +24,7 @@ type SearchBarProps = {
 };
 
 const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
+  const {t} = useTranslation();
   const dynamicStyles = () => ({
     color: searchKey.length > 0 ? light.active : light.placeholder,
     marginHorizontal: 10,
@@ -40,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
         <SearchIcon style={dynamicStyles()} />
         <TextInput
           placeholderTextColor={light.placeholder}
-          placeholder={en.searchPlaceholder}
+          placeholder={t(TranslationKeys.searchPlaceholder)}
           style={styles.searchInput}
           onChange={onSeachKeyChange}
           value={searchKey}

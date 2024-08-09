@@ -14,15 +14,17 @@ import {selectBookById} from '../store/selectors';
 import {useRoute} from '@react-navigation/native';
 // hooks
 import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
-// types
-import {Book} from '../types/entities';
+// localization
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../fixtures/keys';
 // styles
 import StarIcon from '../assets/Star';
 import {light} from '../fixtures/colors.json';
-// fixtures
-import {en} from '../fixtures/langs.json';
+// types
+import {Book} from '../types/entities';
 
 const BookDetails: React.FC = () => {
+  const {t} = useTranslation();
   const route = useRoute();
   const {bookId} = route.params as {bookId: string};
   const book = useAppSelector(state => selectBookById(state, bookId)) as Book;
@@ -31,7 +33,7 @@ const BookDetails: React.FC = () => {
   if (!book) {
     return (
       <View style={styles.centeredView}>
-        <Text style={styles.errorText}>{en.bookNotFound}</Text>
+        <Text style={styles.errorText}>{t(TranslationKeys.bookNotFound)}</Text>
       </View>
     );
   }
@@ -41,14 +43,22 @@ const BookDetails: React.FC = () => {
       <Image source={{uri: book.cover}} style={styles.bookCover} />
       <View style={styles.bookInfo}>
         <Text style={styles.title}>{book.title}</Text>
-        <Text style={styles.releaseDate}>{en.released + book.releaseDate}</Text>
-        <Text style={styles.pages}>{en.pages + book.pages}</Text>
+        <Text style={styles.releaseDate}>
+          {t(TranslationKeys.released) + book.releaseDate}
+        </Text>
+        <Text style={styles.pages}>
+          {t(TranslationKeys.pages) + book.pages}
+        </Text>
         <TouchableOpacity
           style={styles.favoriteButton}
           onPress={handleToggleFavorite.bind(this, book.id)}>
           <StarIcon fill={!book.isFavorite ? light.transparent : undefined} />
           <Text style={styles.favoriteButtonText}>
-            {book.isFavorite ? en.removeFromFavorites : en.addToFavorites}
+            {t(
+              TranslationKeys[
+                book.isFavorite ? 'removeFromFavorites' : 'addToFavorites'
+              ],
+            )}
           </Text>
         </TouchableOpacity>
         <Text style={styles.description}>{book.description}</Text>

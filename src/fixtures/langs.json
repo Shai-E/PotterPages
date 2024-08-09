@@ -1,18 +1,24 @@
 {
   "en": {
-    "continueRead": "Continue reading",
-    "bookNotFound": "Book not found.",
-    "addToFavorites": "Add to Favorites",
-    "removeFromFavorites": "Remove from Favorites",
-    "released": "Released: ",
-    "pages": "Pages: ",
-    "searchPlaceholder": "Search for books...",
-    "back": "Back",
-    "bookDetails": "Book Details",
-    "potterPages": "Potter Pages",
-    "favorites": "Favorites",
-    "noFavorites": "Your favorites list is empty.",
-    "browseBooks": "Browse through the collection and add your favorite books!",
-    "goToBooks": "Go to Books"
+    "translation": {
+      "continueRead": "Continue reading",
+      "bookNotFound": "Book not found.",
+      "addToFavorites": "Add to Favorites",
+      "removeFromFavorites": "Remove from Favorites",
+      "released": "Released: ",
+      "pages": "Pages: ",
+      "searchPlaceholder": "Search for books...",
+      "back": "Back",
+      "bookDetails": "Book Details",
+      "potterPages": "Potter Pages",
+      "favorites": "Favorites",
+      "noFavorites": "Your favorites list is empty.",
+      "browseBooks": "Browse through the collection and add your favorite books!",
+      "goToBooks": "Go to Books",
+      "books": "Books",
+      "tabs": "tabs",
+      "main": "main",
+      "details": "details"
+    }
   }
 }

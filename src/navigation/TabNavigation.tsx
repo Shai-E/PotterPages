@@ -4,8 +4,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // screens
 import BooksScreen from '../screens/BooksScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
-// fixtures
-import {en} from '../fixtures/langs.json';
+// localization
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../fixtures/keys';
 // styles
 import BookmarkIcon from '../assets/Bookmark';
 import BookIcon from '../assets/Book';
@@ -31,6 +32,7 @@ const bookmarkTabIcon = ({focused}: {focused: boolean}) => (
 const Tab = createBottomTabNavigator<TabsParamList>();
 
 const TabNavigation = () => {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -45,7 +47,7 @@ const TabNavigation = () => {
         tabBarInactiveTintColor: light.placeholder, // Color when the tab is inactive
       }}>
       <Tab.Screen
-        name="books"
+        name={t(TranslationKeys.books) as keyof TabsParamList}
         component={BooksScreen}
         options={{
           headerShown: true,
@@ -54,12 +56,12 @@ const TabNavigation = () => {
           },
           headerTintColor: light.primaryText,
           headerTitleAlign: 'center',
-          headerTitle: en.potterPages,
+          headerTitle: t(TranslationKeys.potterPages),
           tabBarIcon: bookTabIcon,
         }}
       />
       <Tab.Screen
-        name="favorites"
+        name={t(TranslationKeys.favorites) as keyof TabsParamList}
         component={FavoritesScreen}
         options={{
           headerShown: true,
@@ -68,7 +70,7 @@ const TabNavigation = () => {
           },
           headerTintColor: light.primaryText,
           headerTitleAlign: 'center',
-          headerTitle: en.favorites,
+          headerTitle: t(TranslationKeys.favorites),
           tabBarIcon: bookmarkTabIcon,
         }}
       />
