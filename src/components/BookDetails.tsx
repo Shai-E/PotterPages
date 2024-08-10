@@ -23,12 +23,13 @@ import StarIcon from '../assets/Star';
 import {useColors} from '../hooks/useColors';
 // types
 import {Book} from '../types/entities';
+import {MainStackParamList, ScreenNames} from '../types/navigation';
 
 const BookDetails: React.FC = () => {
   const colors = useColors();
   const {t} = useTranslation();
   const route = useRoute();
-  const {bookId} = route.params as {bookId: string};
+  const {bookId} = route.params as MainStackParamList[ScreenNames.DETAILS];
   const book = useAppSelector(state => selectBookById(state, bookId)) as Book;
   const handleToggleFavorite = useToggleFavoriteCB();
 

@@ -3,17 +3,19 @@ import {View, Button, StyleSheet} from 'react-native';
 // components
 import TextElement from './reusable/TextElement';
 // hooks
-import {useNavigateToBooksCB} from '../hooks/navigationHooks';
+import {useNavigateToTabCB} from '../hooks/navigationHooks';
 // localization
 import {useTranslation} from 'react-i18next';
 // styles
 import {TranslationKeys} from '../services/localization/keys';
 import {useColors} from '../hooks/useColors';
+// types
+import {ScreenNames} from '../types/navigation';
 
 const EmptyFavoritesPrompt: React.FC = () => {
   const colors = useColors();
   const {t} = useTranslation();
-  const handleNavigateToBooks = useNavigateToBooksCB();
+  const handleNavigateToBooks = useNavigateToTabCB(ScreenNames.BOOKS);
 
   return (
     <View style={styles.container}>
