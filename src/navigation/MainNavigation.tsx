@@ -7,7 +7,7 @@ import BookDetailScreen from '../screens/BookDetailScreen';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../services/localization/keys';
 // styles
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 // types
 import {ScreenNames} from '../types/navigation';
 
@@ -15,15 +15,16 @@ const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
   const {t} = useTranslation();
+  const colors = useColors();
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
         headerBackTitle: t(TranslationKeys.back),
         headerStyle: {
-          backgroundColor: light.primary,
+          backgroundColor: colors.primary,
         },
-        headerTintColor: light.primaryText,
+        headerTintColor: colors.primaryText,
       }}>
       <Stack.Screen
         name={ScreenNames.DETAILS}

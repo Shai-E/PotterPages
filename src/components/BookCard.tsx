@@ -18,7 +18,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 // animations
 import Animated, {FadeInDown} from 'react-native-reanimated';
 // types
@@ -31,6 +31,8 @@ type BookCardProps = {
 };
 
 const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
+  const colors = useColors();
+
   const isFavorite = useAppSelector(state => selectIsFavorite(state, book.id));
 
   const navigateToBookDetail = useNavigateToBookDetailCB();
@@ -46,16 +48,24 @@ const BookCard: React.FC<BookCardProps> = ({book, onFavoritePress, index}) => {
           style={styles.cover}
           imageStyle={styles.image}
           resizeMode={'cover'}>
-          <View style={styles.overlay}>
-            <View style={styles.infoContainer}>
-              <TextElement style={styles.title}>{book.title}</TextElement>
-              <TextElement style={styles.date}>{book.releaseDate}</TextElement>
+          <View style={[styles.overlay, {backgroundColor: colors.overlay}]}>
+            <View
+              style={[
+                styles.infoContainer,
+                {backgroundColor: colors.transparent},
+              ]}>
+              <TextElement style={[styles.title, {color: colors.primaryText}]}>
+                {book.title}
+              </TextElement>
+              <TextElement style={[styles.date, {color: colors.subtle}]}>
+                {book.releaseDate}
+              </TextElement>
             </View>
             <TouchableOpacity
               onPress={onFavoritePress.bind(this, book.id)}
               hitSlop={{top: 20, right: 20, bottom: 20, left: 20}}
               style={styles.favoriteIcon}>
-              <StarIcon fill={!isFavorite ? light.transparent : undefined} />
+              <StarIcon fill={!isFavorite ? colors.transparent : undefined} />
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -80,23 +90,19 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   overlay: {
-    backgroundColor: light.overlay,
     flex: 1,
     justifyContent: 'space-between',
     padding: 10,
   },
   infoContainer: {
-    backgroundColor: light.transparent,
     paddingHorizontal: 10,
   },
   title: {
-    color: light.primaryText,
     fontSize: 16,
     fontWeight: 'bold',
     fontStyle: 'italic',
   },
   date: {
-    color: light.subtle,
     fontSize: 12,
     marginTop: 2,
   },

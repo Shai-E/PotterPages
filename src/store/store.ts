@@ -1,6 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import {configureStore} from '@reduxjs/toolkit';
 import {bookSlice} from '../store/reducers/booksReducer';
+import paletteSlice from '../store/reducers/paletteReducer';
 import {bookSaga, favoriteSaga} from './sagas/bookSaga';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -17,6 +18,7 @@ const persistedReducer = persistReducer(persistConfig, bookSlice.reducer);
 export const store = configureStore({
   reducer: {
     books: persistedReducer,
+    colors: paletteSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

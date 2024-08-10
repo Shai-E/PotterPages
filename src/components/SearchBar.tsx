@@ -15,7 +15,7 @@ import Animated, {ZoomIn, ZoomOut} from 'react-native-reanimated';
 // styles
 import SearchIcon from '../assets/Search.tsx';
 import ClearIcon from '../assets/Clear.tsx';
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors.ts';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 type SearchBarProps = {
@@ -25,8 +25,9 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
   const {t} = useTranslation();
+  const colors = useColors();
   const dynamicStyles = () => ({
-    color: searchKey.length > 0 ? light.active : light.placeholder,
+    color: searchKey.length > 0 ? colors.active : colors.placeholder,
     marginHorizontal: 10,
   });
 
@@ -38,12 +39,19 @@ const SearchBar: React.FC<SearchBarProps> = ({searchKey, setSearchKey}) => {
 
   return (
     <View style={styles.searchBarContainer}>
-      <View style={styles.searchInputContainer}>
+      <View
+        style={[
+          styles.searchInputContainer,
+          {backgroundColor: colors.secondary},
+        ]}>
         <SearchIcon style={dynamicStyles()} />
         <TextInput
-          placeholderTextColor={light.placeholder}
+          placeholderTextColor={colors.placeholder}
           placeholder={t(TranslationKeys.searchPlaceholder)}
-          style={styles.searchInput}
+          style={[
+            styles.searchInput,
+            {borderColor: colors.border, color: colors.placeholder},
+          ]}
           onChange={onSeachKeyChange}
           value={searchKey}
         />
@@ -69,7 +77,6 @@ const styles = StyleSheet.create({
   searchInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: light.secondary,
     height: hp('6%'),
     marginHorizontal: 10,
     borderRadius: 10,
@@ -81,8 +88,6 @@ const styles = StyleSheet.create({
     borderEndEndRadius: 10,
     paddingHorizontal: 10,
     borderStartWidth: 1,
-    borderColor: light.border,
-    color: light.placeholder,
   },
   icon: {
     marginHorizontal: 10,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 // styles
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 
 type BarStyle = 'light-content' | 'dark-content';
 
@@ -16,15 +16,23 @@ type ScreenContainerProps = {
 const ScreenContainer = ({
   children,
   isScrollable,
-  backgroundColor = light.primary,
-  statusBarColor = light.primary,
+  backgroundColor,
+  statusBarColor,
   statusBarStyle = 'light-content',
 }: ScreenContainerProps): React.JSX.Element => {
+  const colors = useColors();
   const DynamicView = isScrollable ? View : SafeAreaView;
 
   return (
-    <DynamicView style={[styles.container, {backgroundColor}]}>
-      <StatusBar barStyle={statusBarStyle} backgroundColor={statusBarColor} />
+    <DynamicView
+      style={[
+        styles.container,
+        {backgroundColor: backgroundColor || colors.primary},
+      ]}>
+      <StatusBar
+        barStyle={statusBarStyle}
+        backgroundColor={statusBarColor || colors.primary}
+      />
       {children}
     </DynamicView>
   );

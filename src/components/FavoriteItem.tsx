@@ -10,7 +10,7 @@ import {useNavigateToBookDetailCB} from '../hooks/navigationHooks';
 import {useToggleFavoriteCB} from '../hooks/useToggleFavoriteCB';
 // styles
 import StarIcon from '../assets/Star';
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 
 type FavoriteItemProps = {
   bookId: string;
@@ -19,16 +19,20 @@ type FavoriteItemProps = {
 const FavoriteItem: React.FC<FavoriteItemProps> = ({bookId}) => {
   const favorite = useAppSelector(state => selectBookById(state, bookId));
 
+  const colors = useColors();
+
   const handleToggleFavorite = useToggleFavoriteCB();
 
   const navigateToBookDetail = useNavigateToBookDetailCB();
 
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, {backgroundColor: colors.secondary}]}
       onPress={navigateToBookDetail.bind(this, favorite.id)}>
       <Image source={{uri: favorite.cover}} style={styles.image} />
-      <TextElement style={styles.title}>{favorite.title}</TextElement>
+      <TextElement style={[styles.title, {color: colors.secondaryText}]}>
+        {favorite.title}
+      </TextElement>
       <TouchableOpacity
         onPress={handleToggleFavorite.bind(this, favorite.id)}
         hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}>
@@ -43,7 +47,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: light.secondary,
     borderRadius: 8,
     marginVertical: 5,
   },
@@ -57,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
-    color: light.secondaryText,
   },
 });
 

@@ -7,19 +7,20 @@ import {useNavigateToBooksCB} from '../hooks/navigationHooks';
 // localization
 import {useTranslation} from 'react-i18next';
 // styles
-import {light} from '../fixtures/colors.json';
 import {TranslationKeys} from '../services/localization/keys';
+import {useColors} from '../hooks/useColors';
 
 const EmptyFavoritesPrompt: React.FC = () => {
+  const colors = useColors();
   const {t} = useTranslation();
   const handleNavigateToBooks = useNavigateToBooksCB();
 
   return (
     <View style={styles.container}>
-      <TextElement style={styles.message}>
+      <TextElement style={[styles.message, {color: colors.primaryText}]}>
         {t(TranslationKeys.noFavorites)}
       </TextElement>
-      <TextElement style={styles.subMessage}>
+      <TextElement style={[styles.subMessage, {color: colors.subtle}]}>
         {t(TranslationKeys.browseBooks)}
       </TextElement>
       <Button
@@ -42,11 +43,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
-    color: light.primaryText,
   },
   subMessage: {
     fontSize: 16,
-    color: light.subtle,
     marginBottom: 20,
     textAlign: 'center',
   },

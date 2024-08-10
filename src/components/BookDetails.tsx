@@ -20,11 +20,12 @@ import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../services/localization/keys';
 // styles
 import StarIcon from '../assets/Star';
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 // types
 import {Book} from '../types/entities';
 
 const BookDetails: React.FC = () => {
+  const colors = useColors();
   const {t} = useTranslation();
   const route = useRoute();
   const {bookId} = route.params as {bookId: string};
@@ -34,7 +35,7 @@ const BookDetails: React.FC = () => {
   if (!book) {
     return (
       <View style={styles.centeredView}>
-        <TextElement style={styles.errorText}>
+        <TextElement style={[styles.errorText, {color: colors.errorText}]}>
           {t(TranslationKeys.bookNotFound)}
         </TextElement>
       </View>
@@ -42,21 +43,35 @@ const BookDetails: React.FC = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <Image source={{uri: book.cover}} style={styles.bookCover} />
-      <View style={styles.bookInfo}>
-        <TextElement style={styles.title}>{book.title}</TextElement>
-        <TextElement style={styles.releaseDate}>
+    <ScrollView
+      contentContainerStyle={[
+        styles.contentContainer,
+        {backgroundColor: colors.background},
+      ]}>
+      <Image
+        source={{uri: book.cover}}
+        style={[styles.bookCover, {borderColor: colors.subtle}]}
+      />
+      <View
+        style={[
+          styles.bookInfo,
+          {backgroundColor: colors.secondary, shadowColor: colors.shadow},
+        ]}>
+        <TextElement style={[styles.title, {color: colors.secondaryText}]}>
+          {book.title}
+        </TextElement>
+        <TextElement style={[styles.releaseDate, {color: colors.subtitle}]}>
           {t(TranslationKeys.released) + book.releaseDate}
         </TextElement>
-        <TextElement style={styles.pages}>
+        <TextElement style={[styles.pages, {color: colors.subtitle}]}>
           {t(TranslationKeys.pages) + book.pages}
         </TextElement>
         <TouchableOpacity
           style={styles.favoriteButton}
           onPress={handleToggleFavorite.bind(this, book.id)}>
-          <StarIcon fill={!book.isFavorite ? light.transparent : undefined} />
-          <TextElement style={styles.favoriteButtonText}>
+          <StarIcon fill={!book.isFavorite ? colors.transparent : undefined} />
+          <TextElement
+            style={[styles.favoriteButtonText, {color: colors.active}]}>
             {t(
               TranslationKeys[
                 book.isFavorite ? 'removeFromFavorites' : 'addToFavorites'
@@ -64,7 +79,9 @@ const BookDetails: React.FC = () => {
             )}
           </TextElement>
         </TouchableOpacity>
-        <TextElement style={styles.description}>{book.description}</TextElement>
+        <TextElement style={[styles.description, {color: colors.info}]}>
+          {book.description}
+        </TextElement>
       </View>
     </ScrollView>
   );
@@ -74,7 +91,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     alignItems: 'center',
-    backgroundColor: light.background,
   },
   bookCover: {
     width: 180,
@@ -82,15 +98,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: light.subtle,
   },
   bookInfo: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: light.secondary,
     padding: 20,
     borderRadius: 10,
-    shadowColor: light.shadow,
     shadowOpacity: 0.1,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 4},
@@ -101,21 +114,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
-    color: light.secondaryText,
   },
   releaseDate: {
     fontSize: 16,
-    color: light.subtitle,
     marginBottom: 5,
   },
   pages: {
     fontSize: 16,
-    color: light.subtitle,
     marginBottom: 20,
   },
   description: {
     fontSize: 16,
-    color: light.info,
     textAlign: 'center',
     marginBottom: 30,
     lineHeight: 24,
@@ -128,7 +137,6 @@ const styles = StyleSheet.create({
   favoriteButtonText: {
     marginLeft: 10,
     fontSize: 16,
-    color: light.active,
   },
   centeredView: {
     flex: 1,
@@ -137,7 +145,6 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 18,
-    color: light.errorText,
   },
 });
 

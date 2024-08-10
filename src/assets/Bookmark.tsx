@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Svg, {SvgProps, Path} from 'react-native-svg';
+import {sharedColors} from './colors/colors';
 
 interface CustomSvgProps extends SvgProps {
   color?: string;
 }
 
 const SvgComponent: React.FC<CustomSvgProps> = ({
-  color = 'black',
+  color = sharedColors.black,
   ...props
 }) => (
   <Svg
