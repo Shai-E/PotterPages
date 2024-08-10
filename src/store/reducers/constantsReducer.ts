@@ -7,12 +7,12 @@ const initialState = {
   isDarkMode: false,
 };
 
-export const paletteSlice = createSlice({
-  name: 'colors',
+export const constantsSlice = createSlice({
+  name: 'constants',
   initialState: initialState,
   reducers: {},
 });
 
-export const {} = paletteSlice.actions;
+export const {} = constantsSlice.actions;
 
-export default paletteSlice.reducer;
+export default constantsSlice.reducer;

@@ -20,6 +20,7 @@ export const selectBooksList = (state: RootState): Book[] => state.books.books;
 export const selectColors = (
   state: RootState,
   isDarkMode: boolean,
-): ColorTheme => state.colors.palette[isDarkMode ? 'dark' : 'light'];
+): ColorTheme => state.constants.palette[isDarkMode ? 'dark' : 'light'];
 
-export const selectIsDarkMode = (state: RootState) => state.colors.isDarkMode;
+export const selectIsDarkMode = (state: RootState) =>
+  state.constants.isDarkMode;

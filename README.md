@@ -96,7 +96,6 @@ The project's folder structure follows a standard React Native setup, organized 
 │   ├── /navigation  # Navigation setup
 │   ├── /store       # Redux-related files
 │   ├── /screens     # Application screens
-│   ├── /fixtures    # Application constants
 │   ├── /hooks       # Custom hooks
 │   ├── /utils       # Utilities
 │   ├── /types       # Application types and interfaces
