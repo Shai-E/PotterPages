@@ -124,6 +124,8 @@ This project uses the following main dependencies:
 - **React Native Responsive Screen**: `^1.4.2`
 - **React Native Safe Area Context**: `^4.10.8`
 - **React Native Splash Screen**: `^3.3.0`
+- **React i18next**: `^15.0.1`
+- **i18next**: `^23.12.2`
 
 ## DevDependencies
 
