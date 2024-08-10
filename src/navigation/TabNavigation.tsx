@@ -41,8 +41,8 @@ const TabNavigation = () => {
         },
         tabBarLabelStyle: {
           fontSize: 12,
+          fontFamily: 'Poppins',
         },
-
         tabBarActiveTintColor: light.primaryText, // Color when the tab is active
         tabBarInactiveTintColor: light.placeholder, // Color when the tab is inactive
       }}>
