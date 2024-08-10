@@ -9,8 +9,8 @@ import {useDebounce} from '../hooks/useDebounce';
 import ScreenContainer from '../components/ScreenContainer';
 import SearchBar from '../components/SearchBar';
 import BookList from '../components/BookList';
-//fixtures
-import {light} from '../fixtures/colors.json';
+// styles
+import {useColors} from '../hooks/useColors';
 
 const BooksScreen: React.FC = () => {
   const [searchKey, setSearchKey] = useState('');
@@ -20,6 +20,8 @@ const BooksScreen: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const debouncedSearchKey = useDebounce(searchKey, 300);
+
+  const colors = useColors();
 
   useEffect(() => {
     if (!books || books.length === 0) {
@@ -54,7 +56,7 @@ const BooksScreen: React.FC = () => {
   }, []);
 
   return (
-    <ScreenContainer backgroundColor={light.primary}>
+    <ScreenContainer backgroundColor={colors.primary}>
       <SearchBar searchKey={searchKey} setSearchKey={setSearchKey} />
       <BookList
         books={filteredBooks}

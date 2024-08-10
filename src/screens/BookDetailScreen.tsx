@@ -3,11 +3,12 @@ import React from 'react';
 import ScreenContainer from '../components/ScreenContainer';
 import BookDetails from '../components/BookDetails';
 // styles
-import {light} from '../fixtures/colors.json';
+import {useColors} from '../hooks/useColors';
 
 const BookDetailScreen: React.FC = () => {
+  const colors = useColors();
   return (
-    <ScreenContainer isScrollable backgroundColor={light.background}>
+    <ScreenContainer isScrollable backgroundColor={colors.background}>
       <BookDetails />
     </ScreenContainer>
   );
