@@ -1,9 +1,7 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 // components
 import FavoriteItem from './FavoriteItem';
-// animations
-import Animated, {LinearTransition} from 'react-native-reanimated';
 // styles
 import EmptyFavoritesPrompt from './EmptyFavoritesPrompt';
 
@@ -17,14 +15,13 @@ const FavoriteList: React.FC<FavoriteListProps> = ({favorites}) => {
 
   return (
     <View style={styles.listContainer}>
-      <Animated.FlatList
+      <FlatList
         data={favorites}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         contentContainerStyle={
           favorites.length === 0 && styles.contentContainer
         }
-        itemLayoutAnimation={LinearTransition}
         ListEmptyComponent={<EmptyFavoritesPrompt />}
       />
     </View>
